@@ -1,0 +1,107 @@
+.grid{
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+}
+.column{
+  padding: 10px;
+}
+.img-name{
+  margin-left: 40px;
+  text-align: justify;
+}
+.name{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.desc{
+  font-size: 15px;
+  //text-align: justify;
+}
+
+.desktop-class{
+  display: flex;
+  justify-content: space-between;
+}
+.desktop-width{
+  width: 50%;
+}
+.desktop-img{
+
+}
+
+
+//phone view code
+
+.phone-class{
+  display: block;
+}
+.phone-grid{
+  grid-template-columns: 100% 100%;
+}
+.phone-width{
+  width: 100%;
+  text-align: center;
+}
+.img-phone-name{
+  margin-left: 0;
+  text-align: center;
+}
+.product-btn2{
+  font-size: 18px;
+}
+.product-setting{
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+
+.name{
+  font-size: 16px;
+  font-weight: bold;
+}
+.num{
+  font-size: 14px;
+  font-weight: bold;
+}
+.justify{
+  text-align: justify!important;
+}
+.see{
+  box-shadow: none;
+  color: dodgerblue;
+  padding: 0;
+}
+.t-right{
+  padding-right: 10px;
+}
+.text-product{
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+.product-button {
+  font-size: 18px;
+}
+.product-image{
+  width: 100px!important;
+
+}
+.phone-name{
+  padding-left: 40px;
+}
+
+.phone-des{
+  text-align: justify;
+  word-spacing: -3px;
+}
+

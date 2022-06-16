@@ -1,0 +1,89 @@
+.mat-input{
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-save{
+  width: 90px;
+  height: 45px;
+  border-radius: 8px;
+  border: 2px solid #1a73e8;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-right: 15px;
+
+}
+.heading-api{
+  font-size: 22px;
+  margin: 20px;
+  font-weight: 700;
+}
+.mat-form-field{
+  width: 390px;
+}
+
+.w-full{
+  width: 240px;
+}
+.api-row{
+  margin: 10px;
+  font-size: 22px;
+  font-weight: 600;
+
+}
+.entered-api {
+  margin: 10px 0 10px 10px
+}
+hr{
+  width: 98%;
+  margin: 10px auto 20px auto;
+}
+.text-api{
+  font-size: 17px;
+  color: #1d1d1d;
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+.text-service{
+  font-size: 17px;
+  color: #1d1d1d;
+  font-weight: 500;
+  margin-left: 8px;
+}
+.logo{
+  margin-right: 10px;
+}
+
+.action-btn{
+  background: white !important;
+  width: 10%;
+  border: none;
+  outline: none!important;
+
+}
+.action-btn:focus{
+  outline: none;
+}
+.close-bttn{
+  align-self: center;
+}
+.cls-btn{
+  border: none;
+  background: none;
+
+}
+.api-text{
+  font-size: 18px;
+  font-weight: bold;
+}
+.icon-api{
+  width: 38px!important;
+  height: 38px!important;
+}
+.width-paytrail{
+  width: 200px!important;
+}

@@ -1,0 +1,186 @@
+<div *ngIf="dialogData.type === 'logout'">
+  <div class="logout">
+    <div class="text">Are you sure, you want to Logout ?</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="confirm()">Yes</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'exit'">
+  <div class="exit">
+    <div class="text">If you exit without saving, you're changes will be lost.</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="exit()">Exit</button>
+      <button mat-flat-button class="no" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'delete-service'">
+  <div class="exit">
+    <div class="text">Are you sure, you want to delete this service ?</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="delete(dialogData.value)">Yes</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'delete-product'">
+  <div class="exit">
+    <div class="text">Are you sure, you want to delete this product ?</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="deleteProduct(dialogData.value)">Yes</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'delete-api'">
+  <div class="exit">
+    <div class="text">Are you sure, you want to delete this API ?</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="deleteApi(dialogData.value)">Yes</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<!--publish api here-->
+<div *ngIf="dialogData.type === 'publish'">
+  <div class="exit">
+    <div class="text-publish">Your site will deploy on this domain <strong class="m-l-20">"{{ session.getSite().domain}}"</strong>
+      Please save your all changes first. It will take about 10 minutes to deploy your site.
+    </div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="publishSite()">Publish</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<!--timer for deployment of site-->
+<div *ngIf="dialogData.type === 'wait'">
+  <div class="exit" *ngIf="time.minutes > 0; else published">
+    <div class="text">Your site is under deployment. Don't refresh or close the website. Your site will deploy in <br> {{time.minutes - 1}}m : {{time.totalTimes}}s
+    </div>
+  </div>
+  <ng-template #published>
+    <div class=" exit text-publish">Your website published successfully!</div>
+    <div class="log-button">
+      <button mat-flat-button class="no" (click)="close()">Close</button>
+    </div>
+  </ng-template>
+</div>
+
+
+<!--domain confirmation-->
+<div *ngIf="dialogData.type === 'domain-confirmation'">
+  <div class="exit">
+    <div class="text">Please verify your domain first.</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="domainConfirm()">Settings</button>
+      <button mat-flat-button class="no" (click)="close()">No</button>
+    </div>
+  </div>
+</div>
+
+<!--domain is not verified-->
+<div *ngIf="dialogData.type === 'not-verify'">
+  <div class="verify-exit">
+    <div class="verify-text">Your domain is not verified. Please try after some time.</div>
+    <div class="verify-close">
+      <button mat-flat-button class="close" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!--domain is verified-->
+
+<div *ngIf="dialogData.type === 'verify'">
+  <div class="verify-exit">
+    <div class="verify-text">Your domain is verified.</div>
+    <div class="verify-close">
+      <button mat-flat-button class="close" (click)="nextStep()">Next</button>
+      <!--      <button mat-flat-button class="no" (click)="close()">Close</button>-->
+    </div>
+  </div>
+</div>
+<!--for going to settings-->
+<div *ngIf="dialogData.type === 'settings'">
+  <div class="exit">
+    <div class="text">Please save your changes first, otherwise changes will be lost.</div>
+    <div class="log-button">
+      <button mat-flat-button class="yes" (click)="goToSettings()">Settings</button>
+      <button mat-flat-button class="no" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'mail'">
+   <div class="t-right">
+     <button mat-flat-button (click)="close()">
+     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+       <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+     </svg>
+   </button>
+   </div>
+  <div class="infoInstructions">
+    <h4>Instructions</h4>
+  1. Enter username from SMTP credentials. <br>
+  2. Enter password from SMTP credentials. <br>
+  3. Enter Host from SMTP settings. <br>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'stripe'">
+    <div class="t-right">
+    <button  mat-flat-button (click)="close()">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+      </svg>
+    </button>
+    </div>
+  <div class="infoInstructions">
+    <h4>Instructions</h4>
+    1. Enter secret key which starts from sk. <br>
+    2. Enter publishable key which starts from pk. <br>
+    3. Please avoid any type of spacing. <br>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'paytrail'">
+   <div class="t-right">
+     <button mat-flat-button (click)="close()">
+       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+         <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+       </svg>
+     </button>
+   </div>
+  <div class="infoInstructions">
+    <h4>Instructions</h4>
+    1. Enter Auth key  <br>
+    2. Enter Merchant Id <br>
+    3. Please avoid any type of spacing. <br>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type === 'scheduler'">
+   <div class="t-right">
+     <button mat-flat-button (click)="close()">
+       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+         <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+       </svg>
+     </button>
+   </div>
+  <div class="infoInstructions">
+    <h4>Instructions</h4>
+    1. Enter API key <br>
+    2. Enter Username <br>
+    3. Enter Password <br>
+  </div>
+</div>
+
+

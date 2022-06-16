@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="row">
+    <div class="col p-t-15 p-b-15" *ngIf="session.getSite().custom?.logoAsHeader === false ">
+      <a class=" brand-link" href="">
+        <span class="brand" [ngStyle]="{color: this.session.getColor(), 'font-family': this.session.getFont()}">{{session.getSite()?.name}}</span>
+      </a>
+    </div>
+    <div class="col p-t-12 m-l-15" *ngIf="session.getSite().custom?.logoAsHeader ">
+      <img [src]="session.getSite().logo" style="height: auto; width: 50px;"  alt="No image">
+    </div>
+  </div>
+</div>
+
+<!--<div class="text-right">-->
+<!--  <div class="btn-container">-->
+<!--    <input type="radio" name="food" id="eng" [checked]="2=== 2"  hidden/>-->
+<!--    <label for="eng">Fin</label>-->
+<!--    <input  type="radio" name="food" id="fin" [checked]="1 === 1" hidden/>-->
+<!--    <label for="fin">Eng</label>-->
+<!--  </div>-->
+<!--</div>-->
+

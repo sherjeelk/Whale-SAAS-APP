@@ -1,0 +1,47 @@
+<div class="service">
+  <div class="d-flex justify-content-between">
+    <h3>Add Service</h3>
+    <button class="close-btn" (click)="cancel()">
+      <span class="mdi mdi-window-close"></span>
+    </button>
+  </div>
+  <hr />
+  <form [formGroup]="addNewServiceForm">
+    <div class="mb-3">
+      <label class="mb-2 form-label" for="name">
+        <strong class="form_label">Name</strong> </label> <br>
+      <input placeholder="Enter Name" type="text" formControlName="name" class="input-grey" id="name">
+    </div>
+
+    <div class="mb-4">
+      <div class="mb-3"><strong class="form_label">Select True or False</strong>  </div>
+      <mat-radio-group  (change)="radioChange($event)"  formControlName="active" >
+        <mat-radio-button class="m-r-15"  [value]="true">True</mat-radio-button>
+        <mat-radio-button  [value]="false">False</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="!data" class="mb-4">
+      <label class="mb-2"><strong class="form_label">Select Image</strong> </label> <br>
+      <input (change)="fileChange($event)" type="file" accept="image/*">
+      <img *ngIf="imgUrl.length > 0" [src]="imgUrl" alt="" class="upload-img">
+    </div>
+    <div *ngIf="data" class="mb-4">
+      <label class="mb-2"><strong class="form_label">Change Image</strong> </label> <br>
+      <div class="dis-flex justify-content-between">
+        <img class="change-img" [src]="addImg ? imgUrl : (data.image ? data.image : 'assets/img/whale-placeholder.png')" alt="">
+        <input class="align-self-center" (change)="fileChange($event)" type="file" accept="image/*"  >
+      </div>
+    </div>
+    <div *ngIf="!load">
+      <button  mat-raised-button color="primary" *ngIf="!data" (click)="upLoadImg(1)">Save</button>
+    </div>
+    <div *ngIf="load" class="text-center">
+      <mat-spinner diameter="30"></mat-spinner>
+    </div>
+    <div *ngIf="!load">
+      <button  mat-raised-button color="warn" *ngIf="data" (click)="upLoadImg(2)">Update</button>
+    </div>
+
+  </form>
+</div>

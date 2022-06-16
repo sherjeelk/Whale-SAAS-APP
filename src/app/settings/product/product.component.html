@@ -1,0 +1,60 @@
+<div class="container" style="margin-top: 20px;" >
+  <div>
+    <div class="dis-flex justify-content-between">
+      <div class="mb-5 dis-flex ">
+<!--        <span class="bck-btn">-->
+<!--                    <svg (click)="backBtn()" style="width:24px;height:24px" viewBox="0 0 24 24">-->
+<!--         <path fill="currentColor" d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z" />-->
+<!--        </svg>-->
+<!--        </span>-->
+<!--        <h4> Manage Product</h4>-->
+      </div>
+      <div>
+        <button mat-raised-button  class="add-btn" (click)="openProductPopUp()">Add Product</button>
+      </div>
+    </div>
+
+    <div>
+      <mat-card class="section-card">
+        <div *ngIf="createProduct.length>0">
+          <table *ngIf="load">
+            <tr>
+              <th>Id</th> <th>Name</th> <th>Image</th> <th>Price</th> <th>Action</th>
+            </tr>
+            <tr *ngFor="let item of createProduct" >
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td><img style="width: 70px;" [src]="item.image ? (item.image) : 'assets/img/whale-placeholder.png'" alt=""> </td>
+              <td>{{item.price}} {{session.getSite().custom?.global?.currency}} </td>
+
+              <td>
+                <button class="btn action_btn1" (click)="openProductPopUp(item)">
+                  <svg style="width:18px;height:18px;color: gray" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+                  </svg>
+                </button>
+                <button class="btn action_btn1" (click)="deleteProduct(item)">
+                  <svg style="width: 15px; height: 15px" viewBox="0 0 24 24">
+                    <path
+                      d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z"
+                      fill="#767676"
+                    />
+                  </svg></button>
+              </td>
+            </tr>
+          </table>
+          <div *ngIf="!load" class="spin-load">
+            <mat-spinner diameter="60"></mat-spinner>
+            <div class="load">Loading...</div>
+          </div>
+
+        </div>
+        <div *ngIf="createProduct.length === 0" class="text-center mt-5 mb-4">
+          <mat-icon class="icon-product"><img style="width: 100%;" src="./assets/img/setting/package.png" class="m-b-13" alt=""> </mat-icon>
+          <div class="product-text">Currently no product available.</div>
+          <div class="product-text">Add product here.</div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

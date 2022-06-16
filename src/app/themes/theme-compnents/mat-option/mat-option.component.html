@@ -1,0 +1,30 @@
+<section [class]="data.selected ? 'border' : ''" class="pos-relative m-t-70 section">
+
+<div *ngIf="getServices.length>0">
+  <h2  class="title2" [ngStyle]="{'font-size': data ? data.title.font: '', 'font-weight':data.bold ? 'bold': '', 'font-style':data.italic ? 'italic':'',
+  'text-decoration':data.underline? 'underline':'', color: data.title.color , 'font-family' : data.font_family }">
+    {{data.title.text}}
+  </h2>
+
+  <div [ngStyle]="{ 'color': data.text.color, 'font-size': data.text.font, 'font-family': session.getFont()}"
+       class="m-t-20">
+    {{data.text.text}}
+  </div>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label  [ngStyle]="{color: data.label.color, 'font-size': data.label.font}">{{data.label.text}}</mat-label>
+    <mat-select required >
+      <mat-option value="volvo" *ngFor="let item of getServices">{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+  <div *ngIf="getServices.length===0" class="text-service">
+    <div >Add Service from settings first</div>
+    <div>
+      <button class="setting-button" (click)="settings()" mat-raised-button>Service</button>
+    </div>
+  </div>
+  <app-edit *ngIf="data.selected"></app-edit>
+</section>
+

@@ -1,0 +1,109 @@
+.header{
+  background-color: white;
+  color: black;
+  padding: 0 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  align-self: center;
+
+}
+
+//.header{
+//  background-color: white;
+//  color: white;
+//  padding: 0 15px;
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  -webkit-box-shadow: 0 10px 6px -6px whitesmoke;
+//  -moz-box-shadow: 0 10px 6px -6px whitesmoke;
+//  box-shadow: 0 10px 6px -6px whitesmoke;
+//  z-index: 100;
+//  align-self: center;
+//
+//}
+
+
+.brand{
+  font-size: 30px;
+  cursor: pointer;
+}
+@media (max-width: 499px) {
+
+  .brand{
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.brand-link{
+  color: #ff380a;
+  text-decoration: none;
+}
+.brand-link:hover{
+  color:  #ff380a;
+  text-decoration: none;
+}
+
+.acc-icon{
+  font-size: 50px;
+}
+
+.col{
+  align-self: center;
+}
+
+.icon:focus{
+  outline: none;
+}
+
+
+label{
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px;
+  transition: all 0.3s ease;
+  margin: 0 -3px 0 0;
+  color: whitesmoke;
+}
+
+#eng + label:before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: -1;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+#eng:checked + label:before{
+  left: 0;
+}
+
+#eng:checked + label,
+#fin:checked + label{
+  color: #000;
+}
+
+.btn-signup{
+  border: 1px solid #ff380a;
+  color: #ff380a;
+}
+
+.btn-login{
+  color: #1d1d1d;
+}

@@ -1,0 +1,269 @@
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px rgba(255, 56, 10, 0.1);
+}
+.back{
+  background-color: #1d1d1d;
+  color: white;
+}
+
+.info-head{
+  background: black;
+  color: white;
+  font-size: 28px;
+  text-align: center;
+  padding: 25px 5px;
+  border: 1px solid #ffa700;
+  border-radius: 10px;
+}
+.info-card{
+  padding: 0;
+  border-radius: 0 0 18px 18px;
+  background-color: black;
+}
+
+.info-content{
+  padding: 10px 20px;
+  color: white;
+}
+
+//.mat-card:not([class*=mat-elevation-z]) {
+//  box-shadow: 0 2px 1px -1px rgba(255, 56, 10, 0.1),
+//  0 1px 1px 0  rgba(255, 56, 10, 0.19),
+//  0 1px 3px 0  rgba(255, 56, 10, 0.19),
+//}
+
+
+
+
+
+
+
+.time-cont{
+  border: 1px solid;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.contact-cont{
+  border: 1px solid;
+  padding:15px;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.connect-button{
+  background: #ffa700;
+  color: white;
+  padding: 0 50px;
+  margin-top: 20px;
+}
+
+.positioning{
+  position: fixed;
+  right: 0;
+  height: calc(100% - 140px + 25px);
+  width: calc(100% - 450px + 25px);
+  overflow: auto auto;background: whitesmoke
+}
+.title{
+  //color: #ffa700;
+  margin-top: 15px;
+}
+.next-btn{
+  background: #ffa700;
+  color: white;
+  padding: 0 50px;
+}
+.fname{
+  color: gray;
+}
+.lname{
+  color:white;
+}
+.outline{
+  text-decoration: none;
+  outline: none;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #ffa700;
+  color: #fff;
+}
+.mat-step-header .mat-step-label.mat-step-label-active {
+  color: white;
+}
+.mat-select-value{
+  color: white;
+}
+.mat-select-arrow{
+  color: white ;
+}
+.mat-form-field-label{
+  color: white;
+}
+.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label{
+  color: white;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline{
+  color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start{
+color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-gap{
+color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end{
+color: white;
+}
+.mat-input-element{
+  caret-color: white ;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  border: 1px solid white !important;
+  border-radius: 5px!important;
+}
+.mat-form-field-underline{
+  width: 98%;
+  margin: auto 5px;
+}
+
+
+.card-phone{
+  width: 35%!important;
+  margin: 10px auto;
+}
+
+.list-form{
+  margin-top: 20px;
+}
+
+.mat-vertical-content-container {
+  margin-left: 0px;
+}
+
+.button_style{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+}
+
+.pre-btn{
+  color: white!important;
+  background: #ffa700!important;
+  border-radius: 5px;
+}
+.pre-btn2{
+  color: white!important;
+}
+
+.btn_next {
+  //background-color: #e50000;
+  color: white;
+  border-radius: 17px;
+  outline: none;
+  padding: 1px 29px;
+  font-size: 12px;
+
+}
+.btn_cancel{
+  color: #ffa700;
+  border-radius: 10px;
+  margin-right:5px!important;
+  border: 1px solid #ffa700;
+}
+
+.main-form-card{
+  border-radius: 30px;
+  margin: 40px;
+}
+
+.contact_div
+{
+  border: 1px solid #f9e6e661;
+  background: #f9e6e661;
+  border-radius: 12px;
+  padding: 20px;
+
+}
+
+.info_text {
+  color: #ffa700;
+  font-size: 14px;
+  font-weight: 400;
+
+}
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+.calender-btn{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
+  /* On screens that are 992px wide or less, */
+  @media screen and (max-width: 992px) {
+    mat-slider {
+      width: 100%;
+    }
+    .btn_next {
+      background-color: #ffa700;
+      color: white;
+      border-radius: 13px;
+      outline: none;
+      padding: 1px 16px;
+      font-size: 12px;
+
+    }
+    .btn_proceed {
+      /* width: 30%; */
+      background-color: #ffa700;
+      color: white;
+      border-radius: 10px;
+      float: right;
+      padding: 5px 12px;
+    }
+
+  }
+
+  /* On screens that are 600px wide or less, */
+  @media screen and (max-width: 600px) {
+    mat-slider {
+      width: 90%;
+    }
+
+    .btn_next {
+      background-color: #ffa700;
+      color: white;
+      border-radius: 13px;
+      outline: none;
+      padding: 1px 16px;
+      font-size: 12px;
+    }
+    .btn_proceed {
+      /* width: 30%; */
+      background-color: #ffa700;
+      color: white;
+      border-radius: 10px;
+      float: right;
+      padding: 5px 12px;
+    }
+
+  }

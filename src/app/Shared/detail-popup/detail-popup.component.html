@@ -1,0 +1,22 @@
+<div *ngIf="dialogData.theme.theme; else noTheme">
+<!--  <div class="popup-head"><h5>Enter project details</h5></div>-->
+  <div class="row" style="margin: 0">
+    <div class="col-4" style="padding: 0"><img src="/assets/img/bg-pop.jpg" style="width: 100%;height: auto" alt=""></div>
+    <div class="col-8 detail-cont" >
+      <h5><b>Enter Your details</b></h5>
+      <div class="fs-12">You can change these details later as well</div>
+      <input aria-describedby="email" class="input-grey m-t-20" placeholder="Project Name"  type="text">
+      <input aria-describedby="email" class="input-grey m-t-20" placeholder="Brand Name"  type="text" #brand>
+      <button class="submit-btn" (click)="submit(brand.value)"  mat-flat-button>SUBMIT</button>
+    </div>
+
+  </div>
+</div>
+<ng-template #noTheme >
+  <div class="text-center" style="padding: 25px">
+    <img src="/assets/img/template-under.png" style="width: 50%;margin: auto" alt="">
+    <div class="upcoming-text">Template under construction</div>
+
+  </div>
+
+</ng-template>

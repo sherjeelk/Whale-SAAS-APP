@@ -1,0 +1,46 @@
+<!--<div [class]="data.selected ? 'border' : ''" class="pos-relative m-t-30">-->
+<!--  <div *ngIf="productData.length>0">-->
+<!--    <div-->
+<!--      [ngStyle]="{color: data.color, 'font-size': data ? data.font: '', 'font-weight':data.bold ? 'bold': '', 'font-style':data.italic ? 'italic':'','text-decoration':data.underline? 'underline':'', 'font-family': data.font_family }">-->
+<!--      {{data.text}}</div>-->
+<!--    <div class="fs-14" style="color: #767676" [ngStyle]="{'font-family': ui.font_family}">-->
+<!--      Tap to select-->
+<!--    </div>-->
+<!--    <div *ngFor="let item of productData">-->
+<!--      <div class="t-right">-->
+<!--        <mat-checkbox></mat-checkbox>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <div class="col-lg-4 align-self-center ">-->
+<!--          <img alt="" class="product-image" onerror="this.src='assets/img/whale-placeholder.png';" src="{{item.image}}">-->
+<!--        </div>-->
+<!--        <div class="col-lg-8" [class] ="tabData.active ?'desktop-name': 'phone-name'">-->
+<!--          <div>-->
+<!--        <span [ngStyle]="{color: data.color, 'font-size': '18px', 'font-family': ui.font_family}" class="name">-->
+<!--          {{item.name}} </span>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--        <span [ngStyle]="{'font-size': '16px', 'font-family': ui.font_family}" class="num">-->
+<!--          {{ui.currency}}{{item.price}}</span>-->
+<!--          </div>-->
+<!--          <div *ngIf="item.desc else dummyDes" [ngStyle]="{'font-size':  '14px', 'font-family': ui.font_family}" [class] ="tabData.active ? 'desktop-des' : 'phone-des'">-->
+<!--            {{item.desc}}-->
+<!--          </div>-->
+<!--          <ng-template #dummyDes >No description</ng-template>-->
+
+<!--          &lt;!&ndash;          <div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <button class="btn see" [ngStyle]="{ color: drag.color}"> see more</button>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div *ngIf="productData.length === 0" class="text-product">-->
+<!--    <div> Add Product from settings first.</div>-->
+<!--    <div>-->
+<!--      <button (click)="product()" class="product-button" mat-raised-button>Product</button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <app-edit *ngIf="data.selected"></app-edit>-->
+<!--</div>-->

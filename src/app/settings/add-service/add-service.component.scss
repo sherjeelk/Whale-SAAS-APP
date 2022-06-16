@@ -1,0 +1,68 @@
+.service{
+  margin: 20px 20px 20px 30px;
+}
+table{
+  flex: none;
+  width: 100%;
+  text-align: center;
+}
+.mat-column-id{
+  width: 10% !important;
+  text-align: center;
+}
+.mat-column-name{
+  width: 20% !important;
+  text-align: center;
+}
+.mat-column-active{
+  width:30% !important;
+  text-align: center;
+}
+.mat-column-image{
+  width: 40% !important;
+  text-align: center;
+}
+ td{
+  width: 25% !important;
+}
+.close-btn{
+  background: transparent;
+  color: #0b0e1899;
+  border: none;
+  font-size: 21px;
+  transition: all 0.3s ease-in;
+}
+.close-btn:hover{
+  color: #FF0000FF;
+  font-weight: bold;
+}
+
+.close-btn:focus{
+  outline: none;
+}
+.form_label {
+  font-size: 14px;
+}
+.input-grey {
+  background-color: #f5f8fa;
+  border: none;
+  border-radius: 6px;
+  min-height: 48px;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: medium;
+  transition: color .2s ease,background-color .2s ease;
+}
+
+.input-grey:focus {
+  outline: none !important;
+  background-color: #eceff1;
+}
+.upload-img {
+  height: 64px;
+  width: 64px;
+}
+.change-img{
+  width: 20%;
+}
+

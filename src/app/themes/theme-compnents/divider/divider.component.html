@@ -1,0 +1,4 @@
+<div [class]="data.selected ? 'border' : ''" class="pos-relative m-t-30" style="height: 50px">
+  <hr [ngStyle]="{background: data.color}">
+  <app-edit *ngIf="data.selected"></app-edit>
+</div>

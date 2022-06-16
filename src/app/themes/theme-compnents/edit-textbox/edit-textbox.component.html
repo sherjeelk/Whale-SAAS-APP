@@ -1,0 +1,8 @@
+<div [class]="data.selected ? 'border':''" class="pos-relative m-t-30">
+  <div [ngStyle]="{ 'font-size': data ? data.font: '', 'font-weight':data.bold ? 'bold': '', 'font-style': data.italic ? 'italic': '', 'text-decoration': data.underline? 'underline':'', 'color':data.color, 'font-family': data.font_family}">
+    {{data.text}}
+
+  </div>
+
+  <app-edit *ngIf="data.selected"></app-edit>
+</div>

@@ -1,0 +1,53 @@
+<div class="container" style="margin-top: 20px;">
+  <div>
+    <div class="dis-flex justify-content-between">
+      <div class="mb-5 dis-flex">
+    </div>
+      <div>
+        <button mat-raised-button  class="add-btn" (click)="openServicePopUp()">Add Service</button>
+      </div>
+    </div>
+
+    <div>
+      <mat-card class="section-card">
+        <div *ngIf="createdService.length > 0">
+          <table *ngIf="loading">
+            <tr>
+              <th>Id</th> <th>Name</th> <th>Active</th> <th>Image</th> <th>Action</th>
+            </tr>
+            <tr *ngFor="let item of createdService" >
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.active}}</td>
+              <td><img style="width: 70px;" [src]="item.image ? item.image : 'assets/img/whale-placeholder.png'" alt=""> </td>
+              <td>
+                <button class="btn action_btn" (click)="openServicePopUp(item)">
+                  <svg style="width:18px;height:18px;color: gray" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+                  </svg>
+                </button>
+                <button class="btn action_btn" (click)="deletePopUp(item)">
+                  <svg style="width: 15px; height: 15px" viewBox="0 0 24 24">
+                    <path
+                      d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z"
+                      fill="#767676"
+                    />
+                  </svg></button>
+              </td>
+            </tr>
+          </table>
+          <div class="spin-loading" *ngIf="!loading">
+            <mat-spinner class="spinner" diameter="60"></mat-spinner>
+            <div class="loading"> Loading...</div>
+          </div>
+        </div>
+        <div *ngIf="createdService.length === 0 " class="text-center mt-5 mb-4">
+          <mat-icon class="icon-service"><img src="./assets/img/setting/service.svg" class="m-b-13" alt="">  </mat-icon>
+          <div class="service-text">Currently no service available.</div>
+          <div class="service-text">Add service here.</div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

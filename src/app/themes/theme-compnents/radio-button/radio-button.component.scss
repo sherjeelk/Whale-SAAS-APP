@@ -1,0 +1,206 @@
+//$color1: #f4f4f4;
+//$color2: #3197EE;
+//
+//body {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  min-height: 100vh;
+//}
+//
+//
+//.radio {
+//  margin: 0.5rem;
+//  input[type="radio"] {
+//    position: absolute;
+//    opacity: 0;
+//    + .radio-label {
+//      &:before {
+//        content: '';
+//        background: $color1;
+//        border-radius: 100%;
+//        border: 1px solid darken($color1, 25%);
+//        display: inline-block;
+//        width: 1.4em;
+//        height: 1.4em;
+//        position: relative;
+//        top: -0.2em;
+//        margin-right: 1em;
+//        vertical-align: top;
+//        cursor: pointer;
+//        text-align: center;
+//        transition: all 250ms ease;
+//      }
+//    }
+//    &:checked {
+//      + .radio-label {
+//        &:before {
+//          background-color: $color2;
+//          box-shadow: inset 0 0 0 4px $color1;
+//        }
+//      }
+//    }
+//    &:focus {
+//      + .radio-label {
+//        &:before {
+//          outline: none;
+//          border-color: $color2;
+//        }
+//      }
+//    }
+//    &:disabled {
+//      + .radio-label {
+//        &:before {
+//          box-shadow: inset 0 0 0 4px $color1;
+//          border-color: darken($color1, 25%);
+//          background: darken($color1, 25%);
+//        }
+//      }
+//    }
+//    + .radio-label {
+//      &:empty {
+//        &:before {
+//          margin-right: 0;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//
+//
+//
+////====================color change========================
+//
+//$color1: #f4f4f4;
+//$color2: #ee316a;
+//
+//body {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  min-height: 100vh;
+//}
+//
+//.radio-color-change {
+//  margin: 0.5rem;
+//  input[type="radio"] {
+//    position: absolute;
+//    opacity: 0;
+//    + .radio-label {
+//      &:before {
+//        content: '';
+//        background: $color1;
+//        border-radius: 100%;
+//        border: 1px solid darken($color1, 25%);
+//        display: inline-block;
+//        width: 1.4em;
+//        height: 1.4em;
+//        position: relative;
+//        top: -0.2em;
+//        margin-right: 1em;
+//        vertical-align: top;
+//        cursor: pointer;
+//        text-align: center;
+//        transition: all 250ms ease;
+//      }
+//    }
+//    &:checked {
+//      + .radio-label {
+//        &:before {
+//          background-color: $color2;
+//          box-shadow: inset 0 0 0 4px $color1;
+//        }
+//      }
+//    }
+//    &:focus {
+//      + .radio-label {
+//        &:before {
+//          outline: none;
+//          border-color: $color2;
+//        }
+//      }
+//    }
+//    &:disabled {
+//      + .radio-label {
+//        &:before {
+//          box-shadow: inset 0 0 0 4px $color1;
+//          border-color: darken($color1, 25%);
+//          background: darken($color1, 25%);
+//        }
+//      }
+//    }
+//    + .radio-label {
+//      &:empty {
+//        &:before {
+//          margin-right: 0;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radiomark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 2px solid var(--main-bg-color);
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .radiomark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .radiomark {
+  background-color: transparent;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiomark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .radiomark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .radiomark:after {
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--main-bg-color);
+}

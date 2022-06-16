@@ -1,0 +1,94 @@
+<div class="product">
+  <div class="d-flex justify-content-between">
+    <h4>Add Product</h4>
+    <button (click)="close()" class="close-btn1">
+      <span class="mdi mdi-window-close"></span>
+    </button>
+  </div>
+  <hr/>
+  <form [formGroup]="newProductForm">
+    <div class="mb-3">
+      <label class="mb-2 form-label" for="name">
+        <strong class="form_label">Product Name</strong> </label> <br>
+      <input class="input-grey" formControlName="name" id="name" placeholder="Enter Name" type="text">
+    </div>
+    <div class="mb-3">
+      <label class="mb-2 form-label" for="price">
+        <strong class="form_label"> Enter price</strong> </label> <br>
+      <input class="input-grey" formControlName="price" id="price" placeholder="Price" type="number" >
+    </div>
+
+    <div class="mb-3">
+      <label class="mb-2 form-label" for="desc">
+        <strong class="form_label">Description</strong> </label> <br>
+      <input class="input-grey" formControlName="desc" id="desc" placeholder="Enter Description" type="text">
+    </div>
+
+    <div class="mb-2 add-service">
+      <div>
+        <mat-form-field class="padding-bottom" appearance="outline">
+          <mat-select [(value)]="selectedService" placeholder="Select Service">
+            <mat-option [value]="service" *ngFor="let service of services">{{service.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <button class="add" mat-flat-button (click)="addService(selectedService)">Add</button>
+      </div>
+    </div>
+
+    <div class="mb-4" *ngIf="chosenService.length > 0">
+      <div class="row service-row1" >
+        <div class="col-7 service-col">Id</div>
+        <div class="col-3 service-col">Name</div>
+        <div class="col-2">Action</div>
+      </div>
+      <div class="row service-row"  *ngFor="let service of chosenService" >
+        <div class="col-7 service-col" >{{service.id}}</div>
+        <div class="col-3 service-col">{{service.name}}</div>
+        <div class="col-2 " (click)="deleteService(service)">
+          <svg class="cs-pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+
+
+<!--    <div class="mb-4">-->
+<!--      <div class="mb-3 "><strong class="form_label">Select True or False</strong></div>-->
+<!--      <mat-radio-group (change)="radioChange($event)" formControlName="active">-->
+<!--        <mat-radio-button [value]="true"  class="m-r-15">True</mat-radio-button>-->
+<!--        <mat-radio-button [value]="false">False</mat-radio-button>-->
+<!--      </mat-radio-group>-->
+<!--    </div>-->
+    <div *ngIf="!details" class="mb-4">
+      <label class="mb-2"><strong class="form_label">Select Image</strong> </label> <br>
+      <input (change)="onFileChange($event)" accept="image/*"  type="file">
+      <img *ngIf="imageUrl.length > 0" [src]="imageUrl " alt=""
+           class="upld-img">
+    </div>
+
+
+
+    <div *ngIf="details" class="mb-4">
+      <label class="mb-2"><strong class="form_label">Change Image</strong> </label>
+      <div class="dis-flex justify-content-between">
+        <img class="pro-img" [src]="addImage ? imageUrl :  (details.image ? details.image : 'assets/img/whale-placeholder.png')" alt="No image ">
+
+        <input class="align-self-center" (change)="onFileChange($event)" accept="image/*"  type="file" >
+      </div>
+
+    </div>
+  <div *ngIf="!loading">
+    <button (click)="uploadImage(1)" *ngIf="!details" color="primary"  mat-raised-button>Save</button>
+  </div>
+    <div *ngIf="loading"> <mat-spinner diameter="30"></mat-spinner></div>
+
+    <div *ngIf="!loading">
+    <button (click)="uploadImage(2)" *ngIf="details" color="warn" mat-raised-button>Update</button>
+    </div>
+  </form>
+
+</div>

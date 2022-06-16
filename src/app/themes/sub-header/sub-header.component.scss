@@ -1,0 +1,151 @@
+.header{
+  background-color: #1d1d1d;
+  color: white;
+  padding: 15px 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  z-index: 100;
+  align-self: center;
+
+}
+
+.sub-header{
+  color: black;
+  background: #e0e0e0;
+  padding: 15px 15px;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  align-self: center;
+
+  -webkit-box-shadow: 0 8px 6px -6px whitesmoke;
+  -moz-box-shadow: 0 8px 6px -6px whitesmoke;
+  box-shadow: 0 8px 6px -6px whitesmoke;
+
+}
+
+.exit {
+  background-color: #1e90ff;
+  margin-right: 20px;
+  margin-left: 19px;
+  width: 30%;
+  color: white;
+}
+
+.save {
+  width: 30%;
+  color: #1e90ff;
+  border: 1px solid #1e90ff;
+}
+
+.brand{
+  font-size: 30px;
+  cursor: pointer;
+}
+.mat-icon{
+  font-size: 16px;
+}
+.btn {
+  border: 1px solid gray;
+  text-decoration: none;
+  box-shadow: none;
+  padding: 2px 12px;
+}
+
+.btn1{
+  border: 1px solid gray;
+  padding: 4px;
+
+}
+.btn-signup{
+  border: 1px solid dodgerblue;
+  color: white;
+  background: dodgerblue;
+  padding: 0 35px;
+}
+.btn-signup1{
+  border: 2px solid gray;
+  color: gray;
+  padding: 0 25px;
+  margin-right: 10px;
+}
+@media (max-width: 499px) {
+
+  .brand{
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.brand-link{
+  color: white;
+}
+.brand-link:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.acc-icon{
+  font-size: 50px;
+}
+
+.col{
+  align-self: center;
+}
+
+.icon:focus{
+  outline: none;
+}
+
+
+label{
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px;
+  transition: all 0.3s ease;
+  margin: 0 -3px 0 0;
+  color: whitesmoke;
+}
+
+#eng + label:before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: -1;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+#eng:checked + label:before{
+  left: 0;
+}
+
+#eng:checked + label,
+#fin:checked + label{
+  color: #000;
+}
+
+
+.subheader-align{
+  display: flex;
+  justify-content: space-between;
+  div{
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+  }
+}

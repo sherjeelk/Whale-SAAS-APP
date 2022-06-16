@@ -1,0 +1,69 @@
+table {
+  width: 100%;
+}
+
+.add-btn{
+  background-color: #ff380a;
+  color: #fafafa;
+}
+.section-card{
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  table tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  table th,
+  table td {
+    padding: .625em;
+    text-align: start;
+    width: 20%;
+  }
+
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .action_btn{
+    background: #f0f3f7!important;
+    padding: 0 4px!important;
+    margin-right: 10px!important;
+  }
+
+  margin-bottom: 10px;
+
+}
+.loading{
+  font-size: 20px;
+}
+.spin-loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+.back-btn{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.service-text{
+  font-size: 18px;
+  font-weight: bold;
+}
+.icon-service{
+  width: 38px!important;
+  height: 38px!important;
+}

@@ -1,0 +1,634 @@
+<div class="pos-relative h-full">
+  <mat-card
+    class="pos-absolute"
+    style="position: fixed; left: 0; height: calc(100% - 140px + 25px); width: 379px; overflow: hidden auto; padding: 0 0 0 10px;">
+
+    <div class="builder-tools">
+      <div class="builder">
+        <div class="heading">Builder Tools</div>
+      </div>
+
+      <!------    Header section for change the device button ------->
+      <div class="icon-system">
+        <button (click)="changeDevice(1)"
+          [ngClass]="data.active ? 'bg-color' : 'bg-color2'" class="system-btn">
+          <svg style="width: 32px; height: 32px; padding: 4px 2px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M21 16H3V4H21M21 2H3C1.89 2 1 2.89 1 4V16C1 17.11 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.11 18 23 17.11 23 16V4C23 2.89 22.1 2 21 2M15 5.5L14.38 6.87L13 7.5L14.38 8.13L15 9.5L15.63 8.13L17 7.5L15.63 6.87L15 5.5M10.5 7.5L9.41 9.91L7 11L9.41 12.09L10.5 14.5L11.6 12.09L14 11L11.6 9.91L10.5 7.5"/>
+          </svg>
+        </button>
+        <!--        {{data.value}}-->
+        <button (click)="changeDevice(2)"
+          [ngClass]="data.value ? 'bg-color' : 'bg-color2'" class="mobile-btn">
+          <svg style="width: 32px; height: 32px; padding: 4px 2px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <hr>
+<!-------------    Section for undo redo buttons ----------------->
+    <div *ngIf="!loading">
+      <div class="dis-flex">
+        <div (click)="change(1)" class="mat-icon-fs">
+          <mat-icon class="">undo</mat-icon>
+          <span class="align-self-center fs-20">Undo</span>
+        </div>
+        <div (click)="change(2)" class="mat-icon-fs">
+          <span>Redo</span>
+          <mat-icon>redo</mat-icon>
+        </div>
+      </div>
+      <!-------------   Mat tab group  ----------------->
+      <div>
+        <mat-tab-group style="margin-bottom: 60px">
+          <mat-tab label="Add" style="height: 100%">
+            <div>
+              <div
+                #builderTool="cdkDropList"
+                (cdkDropListDropped)="drag.drop($event)"
+                [cdkDropListData]="drag.builder"
+                cdkDropList
+                cdkDropListConnectedTo="step1"
+                class="row add-mod">
+                <div *ngFor="let tool of drag.builder" class="col-4 mt-3">
+                  <div cdkDrag class="tool-border">
+                    <div>
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        class="builder-icon">{{ tool.icon }}</mat-icon>
+                    </div>
+                    <div style="font-size: 14px">
+                      {{ tool.title }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Edit">
+            <!--                  radio-button-->
+            <div *ngIf="ui.selected">
+              <div *ngIf="ui.selected.components.type === 'radio_button'">
+                <div class="margin-top">
+                  <h5>Edit Radio Buttons</h5>
+                  <div *ngFor="let item of ui.selected.components.dynamicData.radioBtn;index as i ">
+                    <div class="mb-3 align-input delete">
+                      <div><label>Edit button {{ i + 1 }}</label> <br>
+                        <input [(ngModel)]="item.text" aria-describedby="First Name" class="input-radio" placeholder="Button name" type="text">
+                      </div>
+                      <div>
+                        <mat-icon class="cs-pointer" (click)="delete(item)" [ngStyle]="{ color: drag.color }">delete
+                        </mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <button (click)="addRadio()" mat-raised-button class="radio-btn">
+                    Add More
+                  </button>
+                  <div class="mb-3 align-input">
+                    <mat-checkbox
+                      [(ngModel)]="
+                        ui.selected.components.dynamicData.required"
+                      [checked]="required"
+                      (change)="check($event)">
+                      Required
+                    </mat-checkbox>
+                  </div>
+                <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+              <!--                mat-option(Service)-->
+              <div *ngIf="ui.selected.components.type === 'mat-option'">
+                <div class="margin-top">
+                  <div>
+                    <div *ngIf=" ui.selected.components.uiData.title ? ui.selected.components.uiData.title.text.length >= 0 : true " class="mb-3 align-input">
+                      <label>Edit title here</label>
+                      <div>
+                        <div class="dis-flex">
+                          <div class="pos-relative">
+                            <input [(ngModel)]="ui.selected.components.uiData.title.text " aria-describedby="Title" class="input-grey"
+                              placeholder="edit title" type="text">
+                            <input class="color-input"  [(ngModel)]="
+                                ui.selected.components.uiData.title.color " type="color">
+                          </div>
+                          <div class="f-border">
+                            <mat-select (selectionChange)=" ui.selected.components.uiData.title.font = $event.value"
+                                        [ngModel]="ui.selected.components.uiData.title.font"  placeholder="Font Size" >
+                              <mat-option *ngFor = "let item of fontArr" [value]="item+'px'" >{{item}}px</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Edit label here</label>
+                      <div class="dis-flex">
+                        <div class="pos-relative">
+                          <input [(ngModel)]="ui.selected.components.uiData.text.text" aria-describedby="First Name" class="input-grey" placeholder="Edit Label" type="text">
+                          <input class="color-input"  [(ngModel)]=" ui.selected.components.uiData.text.color" type="color">
+                        </div>
+                        <div class="f-border">
+                          <mat-select
+                            (selectionChange)="ui.selected.components.uiData.text.font = $event.value"
+                            [ngModel]="ui.selected.components.uiData.text.font"
+                            placeholder="Font Size">
+                            <mat-option *ngFor = "let item of fontArr" [value]="item+'px'" >{{item}}px</mat-option>
+                          </mat-select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Edit placeholder here</label>
+                      <div>
+                        <div class="dis-flex">
+                          <div class="pos-relative">
+                            <input
+                              [(ngModel)]="ui.selected.components.uiData.label.text" aria-describedby="First Name" class="input-grey" placeholder="edit text" type="text">
+                            <input
+                              class="color-input"
+                              (click)="ui.changeFontStyle(4)"
+                              [(ngModel)]="
+                                ui.selected.components.uiData.label.color "
+                              type="color">
+                          </div>
+                          <div class="f-border">
+                            <mat-select (selectionChange)="ui.selected.components.uiData.label.font = $event.value"
+                                        [ngModel]="ui.selected.components.uiData.label.font"
+                                        placeholder="Font Size">
+                              <mat-option *ngFor = "let item of fontArr" [value]="item+'px'">{{item}}px</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Select Font Family</label>
+                      <mat-select  (selectionChange)="ui.selected.components.uiData.font_family = $event.value"
+                                   [ngModel]="ui.selected.components.uiData.font_family"
+                                   class="input-grey" placeholder="Select Font Family">
+                        <mat-option value="'EB Garamond', serif">EB Garamond</mat-option>
+                        <mat-option value="'Lato', serif">Lato</mat-option>
+                        <mat-option value="'Poppins', serif">Poppins</mat-option>
+                        <mat-option value="'Rubik', serif">Rubik</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="dis-flex align-items-center">
+                    <div class="m-t-20 m-b-20 dis-flex">
+                      <span><button (click)="ui.changeFontStyle(1)"
+                                    [ngClass]="{ white: !ui.selected.components.uiData.bold, black: ui.selected.components.uiData.bold }"
+                                    class="btn">
+                          <img class="font-icon" src="assets/img/icon/bold.png" alt=""></button></span>
+                      <span><button (click)="ui.changeFontStyle(2)"
+                                    [ngClass]="{ white: !ui.selected.components.uiData.italic, black: ui.selected.components.uiData.italic }"
+                                    class="btn">
+                          <img class="font-icon" src="assets/img/icon/italics.png" alt=""></button></span>
+                      <span><button (click)="ui.changeFontStyle(3)"
+                                    [ngClass]="{ white: !ui.selected.components.uiData.underline, black: ui.selected.components.uiData.underline }"
+                                    class="btn">
+                          <img class="font-icon" src="assets/img/icon/underline.png" alt=""></button></span>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+              <!--            Sub-service(Product-grid)-->
+              <div *ngIf="ui.selected.components.type === 'sub-service'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <div class="dis-flex">
+                        <div>
+                          <div>
+                            <label>Select one View</label>
+                            <div class="view-system">
+                              <button mat-raised-button class="grid-btn"
+                                (click)="changView(1)"
+                                [ngClass]="ui.selected.components.dynamicData?.sub_type === 'grid' ? 'back-color' : 'back-color2'">
+                                Grid
+                              </button>
+                              <button mat-raised-button class="stack-btn"
+                                (click)="changView(2)"
+                                      [ngClass]="ui.selected.components.dynamicData?.sub_type === 'stack' ? 'back-color' : 'back-color2'">
+                                Stack
+                              </button>
+                            </div>
+                          </div>
+                          <label>Edit text here</label>
+                          <div>
+                            <div class="dis-flex">
+                              <div class="pos-relative">
+                                <input
+                                  [(ngModel)]="
+                                    ui.selected.components.uiData.text"
+                                  aria-describedby="First Name"
+                                  class="input-grey"
+                                  placeholder="edit text"
+                                  type="text">
+                                <input
+                                  class="color-input"
+                                  (click)="ui.changeFontStyle(4)"
+                                  [(ngModel)]="
+                                    ui.selected.components.uiData.color "
+                                  type="color">
+                              </div>
+                              <div class="f-border">
+                                <mat-select
+                                  (selectionChange)= "ui.selected.components.uiData.font = $event.value"
+                                  [(ngModel)]="ui.selected.components.uiData.font"
+                                  placeholder="Font Size">
+                                  <mat-option *ngFor = "let item of fontArr" [value]="item+'px'" >{{item}}px</mat-option>
+                                </mat-select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Select Font Family</label>
+                      <mat-select
+                        (selectionChange)="ui.selected.components.uiData.font_family = $event.value"
+                        [(ngModel)]="ui.selected.components.uiData.font_family"
+                        class="input-grey"
+                        placeholder="Select Font Family">
+                        <mat-option value="'EB Garamond', serif">EB Garamond</mat-option>
+                        <mat-option value="'Lato', serif">Lato</mat-option>
+                        <mat-option value="'Poppins', serif">Poppins</mat-option>
+                        <mat-option value="'Rubik', serif">Rubik</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+
+
+                  <div class="dis-flex align-items-center">
+                    <div class="m-t-20 m-b-20 dis-flex">
+                      <span><button
+                        (click)="ui.changeFontStyle(1)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.bold, black: ui.selected.components.uiData.bold }"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/bold.png"
+                            alt=""></button></span>
+                      <span><button
+                        (click)="ui.changeFontStyle(2)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.italic, black: ui.selected.components.uiData.italic }"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/italics.png"
+                            alt=""></button></span>
+                      <span><button
+                        (click)="ui.changeFontStyle(3)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.underline, black: ui.selected.components.uiData.underline }"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/underline.png"
+                            alt=""
+                          ></button
+                      ></span>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Divider-->
+              <div *ngIf="ui.selected.components.type === 'divider'">
+                <div class="margin-top">
+                  <div></div>
+                  <div class="dis-flex">
+                    <div class="m-t-20 m-b-20 align-items-center">
+                      <label>Select Color</label> <br>
+                      <input
+                        [(ngModel)]="ui.selected.components.uiData.color"
+                        type="color">
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Text area-->
+              <div *ngIf="ui.selected.components.type === 'text-area'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <label>Edit placeholder text here</label>
+                      <input
+                        [(ngModel)]="ui.selected.components.uiData.text"
+                        aria-describedby="First Name"
+                        class="input-grey"
+                        placeholder="edit text"
+                        type="text">
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Enter title for form </label>
+                      <input
+                        [(ngModel)]="ui.selected.components.dynamicData.tittle"
+                        class="input-grey"
+                        placeholder="edit title"
+                        type="text">
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-select
+                        placeholder="Select Type"
+                        class="input-grey"
+                        (selectionChange)="
+                          ui.selected.components.dynamicData.type = $event.value "
+                      [(ngModel)]="ui.selected.components.dynamicData.type">
+                        <mat-option value="phone">Description</mat-option>
+                        <mat-option value="phone">Note</mat-option>
+                      </mat-select>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-checkbox
+                        [(ngModel)]="
+                        ui.selected.components.dynamicData.required"
+                        [checked]="required"
+                        (change)="check($event)">
+                        Required
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Text box-->
+              <div *ngIf="ui.selected.components.type === 'text-box'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <label>Edit label here</label>
+                      <input
+                        [(ngModel)]="ui.selected.components.uiData.text"
+                        aria-describedby="First Name"
+                        class="input-grey"
+                        placeholder="edit text"
+                        type="text">
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Enter text for form</label>
+                      <input
+                        [(ngModel)]="ui.selected.components.dynamicData.title"
+                        class="input-grey"
+                        placeholder="edit title"
+                        type="text">
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-select
+                        placeholder="Select Type"
+                        class="input-grey"
+                        (selectionChange)="
+                          ui.selected.components.dynamicData.type = $event.value "
+                      [(ngModel)]="ui.selected.components.dynamicData.type">
+                        <mat-option value="name">Name</mat-option>
+                        <mat-option value="first_name">First Name</mat-option>
+                        <mat-option value="middle_name">Middle Name</mat-option>
+                        <mat-option value="last_name">Last Name</mat-option>
+                        <mat-option value="email">Email</mat-option>
+                        <mat-option value="address">Address</mat-option>
+                        <mat-option value="postcode">Postcode</mat-option>
+                        <mat-option value="city">City</mat-option>
+                        <mat-option value="phone">Phone</mat-option>
+                      </mat-select>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-checkbox
+                        [(ngModel)]="
+                          ui.selected.components.dynamicData.required"
+                        [checked]="required"
+                        (change)="check($event)">
+                        Required
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Text box form-field-full-->
+              <div *ngIf="ui.selected.components.type === 'text-box-full'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <label>Edit label here</label>
+                      <input
+                        [(ngModel)]="ui.selected.components.uiData.text"
+                        aria-describedby="First Name"
+                        class="input-grey"
+                        placeholder="edit text"
+                        type="text"
+                      >
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Enter text for form</label>
+                      <input
+                        [(ngModel)]="ui.selected.components.dynamicData.tittle"
+                        class="input-grey"
+                        placeholder="edit title"
+                        type="text"
+                      >
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-select
+                        placeholder="Select Type"
+                        class="input-grey"
+                        (selectionChange)="
+                          ui.selected.components.dynamicData.type = $event.value
+                        "
+                        [(ngModel)]="ui.selected.components.dynamicData.type"
+                      >
+                        <mat-option value="name">Name</mat-option>
+                        <mat-option value="first_name">First Name</mat-option>
+                        <mat-option value="middle_name">Middle Name</mat-option>
+                        <mat-option value="last_name">Last Name</mat-option>
+                        <mat-option value="email">Email</mat-option>
+                        <mat-option value="address">Address</mat-option>
+                        <mat-option value="postcode">Postcode</mat-option>
+                        <mat-option value="city">City</mat-option>
+                        <mat-option value="phone">Phone</mat-option>
+                      </mat-select>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-checkbox
+                        [(ngModel)]="
+                          ui.selected.components.dynamicData.required
+                        "
+                        [checked]="required"
+                        (change)="check($event)"
+                      >
+                        Required
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Check box-->
+              <div *ngIf="ui.selected.components.type === 'check-box'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <label>Edit text here</label>
+                      <div>
+                        <div class="dis-flex">
+                          <div class="pos-relative">
+                            <input [(ngModel)]="ui.selected.components.uiData.text" aria-describedby="First Name" class="input-grey" placeholder="edit text" type="text">
+                            <input class="color-input" (click)="ui.changeFontStyle(4)" [(ngModel)]="ui.selected.components.uiData.color" type="color">
+                          </div>
+                          <div class="f-border">
+                            <mat-select (selectionChange)=" ui.selected.components.uiData.font = $event.value " [(ngModel)]="ui.selected.components.uiData.font" placeholder="Font Size">
+                              <mat-option value="16px">16px</mat-option>
+                              <mat-option value="18px">18px</mat-option>
+                              <mat-option value="20px">20px</mat-option>
+                              <mat-option value="22px">22px</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3 align-input">
+                      <label>Select Font Family</label>
+                      <mat-select (selectionChange)=" ui.selected.components.uiData.font_family =$event.value" [(ngModel)]="ui.selected.components.uiData.font_family" class="input-grey" placeholder="Select Font Family">
+                        <mat-option value="'EB Garamond', serif">EB Garamond</mat-option>
+                        <mat-option value="'Lato', serif">Lato</mat-option>
+                        <mat-option value="'Poppins', serif">Poppins</mat-option>
+                        <mat-option value="'Rubik', serif">Rubik</mat-option>
+                      </mat-select>
+                    </div>
+                    <div>
+                      <label class="label" for="select">
+                        <mat-checkbox (change)="createLink($event)" [checked]=" ui.selected.components.dynamicData?.links.checked">Check if this is link
+                        </mat-checkbox>
+                      </label>
+                      <div>
+                        <mat-select class="input-grey mt-3" [disabled]=" !ui.selected.components.dynamicData?.links.checked "
+                                    (selectionChange)="ui.selected.components.dynamicData.links.title = $event.value" [(ngModel)]="ui.selected.components.dynamicData.links.title" id="select" placeholder="Select One">
+                          <mat-option value="About">About</mat-option>
+                          <mat-option value="Terms">Terms</mat-option>
+                          <mat-option value="Privacy">Privacy</mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <mat-checkbox
+                        [(ngModel)]="ui.selected.components.dynamicData.required"
+                        [checked]="required" (change)="check($event)">
+                        Required
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+
+              <!--            Heading text-->
+              <div *ngIf="ui.selected.components.type === 'heading-text'">
+                <div class="margin-top">
+                  <div>
+                    <div class="mb-3 align-input">
+                      <label>Edit heading text here</label>
+                      <div>
+                        <div class="dis-flex">
+                          <div class="pos-relative">
+                            <input
+                              [(ngModel)]="ui.selected.components.uiData.text"
+                              aria-describedby="First Name"
+                              class="input-grey"
+                              placeholder="edit text"
+                              type="text">
+                            <input
+                              class="color-input"
+                              (click)="ui.changeFontStyle(4)"
+                              [(ngModel)]="ui.selected.components.uiData.color"
+                              type="color">
+                          </div>
+                          <div class="f-border">
+                            <mat-select
+                              (selectionChange)=" ui.selected.components.uiData.font = $event.value "
+                              [(ngModel)]="ui.selected.components.uiData.font"
+                              placeholder="Font Size">
+                              <mat-option *ngFor = "let item of fontArr" [value]="item+'px'" >{{item}}px</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 align-input">
+                      <label>Select Font Family</label>
+                      <mat-select
+                        (selectionChange)="
+                          ui.selected.components.uiData.font_family =
+                            $event.value
+                        "
+                        [(ngModel)]="ui.selected.components.uiData.font_family"
+                        class="input-grey"
+                        placeholder="Select Font Family">
+                        <mat-option value="'EB Garamond', serif">EB Garamond</mat-option>
+                        <mat-option value="'Lato', serif">Lato</mat-option>
+                        <mat-option value="'Poppins', serif">Poppins</mat-option>
+                        <mat-option value="'Rubik', serif">Rubik</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="dis-flex align-items-center">
+                    <div class="m-t-20 m-b-20 dis-flex">
+                      <span><button
+                        (click)="ui.changeFontStyle(1)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.bold, black: ui.selected.components.uiData.bold }"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/bold.png"
+                            alt=""></button></span>
+                      <span><button
+                        (click)="ui.changeFontStyle(2)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.italic, black: ui.selected.components.uiData.italic}"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/italics.png"
+                            alt=""></button></span>
+                      <span><button
+                        (click)="ui.changeFontStyle(3)"
+                        [ngClass]="{ white: !ui.selected.components.uiData.underline , black: ui.selected.components.uiData.underline }"
+                        class="btn">
+                          <img
+                            class="font-icon"
+                            src="assets/img/icon/underline.png"
+                            alt=""></button></span>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: bold">*Please save your changes otherwise your changes will be lost.</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-edit">
+              <div *ngIf="!ui.selected">
+                <div>
+                  <img
+                    alt=""
+                    src="assets/img/edit-image.png"
+                    style="width: 19%">
+                </div>
+                Select an Item to edit
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div *ngIf="loading" class="t-center">
+      <mat-spinner diameter="30"></mat-spinner>
+    </div>
+  </mat-card>
+</div>

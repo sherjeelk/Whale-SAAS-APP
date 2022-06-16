@@ -1,0 +1,16 @@
+<div class="m-t-143 h-full">
+  <app-sub-header></app-sub-header>
+  <div cdkDropListGroup class="dis-flex h-full">
+    <div style="width: 25%">
+      <app-builder-tools></app-builder-tools>
+    </div>
+    <div class="pos-absolute positioning">
+
+      <app-theme-home *ngIf="data.themeType === '1' "></app-theme-home>
+      <app-theme-dark *ngIf="data.themeType === '2' "></app-theme-dark>
+      <app-theme-light *ngIf="data.themeType === '3' "></app-theme-light>
+
+    </div>
+<!--    <div class="align-self-center" *ngIf="loading"><mat-spinner>Loading Theme...</mat-spinner></div>-->
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div >
+  <mat-card>
+    <div class="custom-text">Add Custom Domain</div>
+    <div class=" pos-relative">
+      <div class="bar">
+        <hr>
+      </div>
+      <div class="main-row">
+        <div class="stepper" *ngFor="let stepper of stepperArr"><span
+          class="num-circle mdi mdi-{{stepper.isStepper ? stepper.className: stepper.defaultClass}}"
+          [ngClass]="stepper.isStepper ? 'active': ''"></span> <span class="stepper-text">{{stepper.text}}</span></div>
+      </div>
+
+      <div *ngIf="!createdDomain">
+        <div class="domain-header">
+          <!--    <div class="head-text">Please Enter your domain name</div>-->
+        </div>
+        <div class="text"> Enter the exact domain name that you want people to see when they visit your site. It can be
+          a domain (yourdomain.com)
+          or a subdomain (app.yourdomain.com)
+        </div>
+        <div class="domain-text">Domain</div>
+        <div class="mat-input">
+          <mat-form-field appearance="outline" class="width mt-2">
+            <input [(ngModel)]="domain" matInput type="text" #domainValue>
+          </mat-form-field>
+          <div *ngIf="domainBoolValue">*Domain is already added.</div>
+        </div>
+        <button mat-flat-button class="btn-primary button" (click)="addDomain(domainValue.value)">Add Domain</button>
+      </div>
+
+      <div *ngIf="createdDomain && !domainData">
+        <div class="verify-text">Add the TXT records below to your DNS provider to verify that you own . Do not delete
+          your TXT records.
+        </div>
+        <div class="container">
+          <div class="row domain-header">
+            <hr>
+            <div class="col-lg-1">Type</div>
+            <div class="col-lg-4">Host</div>
+            <div class="col-lg-7">Value</div>
+            <hr>
+          </div>
+
+          <div class="row domain-value">
+            <div class="col-lg-1">TXT</div>
+            <div class="col-lg-4 your-domain">{{createdDomain.domain}}</div>
+            <div class="col-lg-6 your-domain">{{createdDomain.verificationCode}}</div>
+            <div class="col-lg-1 your-domain">
+              <button class="copy" (click)="copyToClipboard(createdDomain.verificationCode)">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                        d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button mat-raised-button class="btn-primary button1" color="primary" (click)="checkDomain()">Verify Domain
+        </button>
+      </div>
+
+    </div>
+  </mat-card>
+</div>
+

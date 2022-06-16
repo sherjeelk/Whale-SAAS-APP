@@ -1,0 +1,53 @@
+.footer{
+  background: #111111;
+  color: whitesmoke;
+  padding: 15px 30px;
+  margin-top: 35px;
+  margin-bottom: 85px;
+}
+
+.about{
+  color: #ff380a ;
+  font-size: 24px;
+}
+
+.about-desc{
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.company-contact-footer{
+  color: white;
+  margin-right: 7px;
+  height: 24px;
+  width: 24px;
+}
+
+.social{
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.footer-row{
+  display: flex;
+  justify-content: space-between;
+
+}
+.social-link{
+  text-decoration: none;
+  color: white;
+}
+
+.desktop-align{
+  align-self: center;
+  text-align: left;
+  display: inline-block;
+  
+}
+@media only screen and (max-width: 768px) {
+  .row {
+    --bs-gutter-x: block!important;
+
+  }
+}

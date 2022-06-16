@@ -1,0 +1,92 @@
+<div>
+<!--  Product grid view-->
+
+<div *ngIf="data.dynamicData.sub_type === 'grid'">
+<div [class] = "data.uiData.selected ? 'border': ''" class="pos-relative m-t-30">
+  <div [ngStyle]="{'font-family': data.uiData.font_family, color: data.uiData.color, 'font-size':data.uiData ? data.uiData.font:'', 'font-weight':data.uiData.bold ? 'bold': '', 'font-style':data.uiData.italic ? 'italic':'','text-decoration':data.uiData.underline? 'underline':'' }">
+   {{data.uiData.text}}
+  </div>
+  <div style="color: #767676" [ngStyle]="{'font-family': session.getFont()}" class="fs-14">
+    Tap to select
+  </div>
+
+
+  <div  [class] ="dataShare.active ?'grid':'phone-grid'">
+    <div class="column m-b-20"  *ngFor="let item of getProductData">
+      <div [class]="dataShare.active ?'desktop-class': 'phone-class'">
+
+        <div [class] ="dataShare.active ? 'desktop-width': 'phone-width'">
+          <img class="m-b-10" onerror="this.src='assets/img/whale-placeholder.png';" [src]="item.image"  alt="" style="height: 100px; width: 100px;">
+          <div [ngStyle]="{'font-family':session.getFont()}" ><strong>Price: </strong> {{session.getCurrency()}}{{item.price}}</div>
+        </div>
+        <div  [class] ="dataShare.active ? 'img-name' : 'img-phone-name'">
+          <div class="name" [ngStyle]="{ color: data.uiData.color,'font-family':session.getFont()}">{{item.name}}</div>
+          <div  *ngIf="item.desc else dummyDes" class="desc" [ngStyle]="{'font-family':session.getFont()}">{{item.desc}}</div>
+          <ng-template #dummyDes >No description</ng-template>
+        </div>
+
+    </div>
+  </div>
+</div>
+  <div *ngIf="getProductData.length === 0" class="product-setting">
+    <div>Add Product from settings first.</div>
+    <div>
+      <button (click)="product()" class="product-btn2" mat-raised-button>Product</button>
+    </div>
+  </div>
+
+  <app-edit *ngIf="data.uiData.selected"></app-edit>
+
+</div>
+</div>
+
+<!--Product stack section-->
+
+<div  *ngIf="data.dynamicData.sub_type === 'stack'">
+
+  <div [class]="data.uiData.selected ? 'border' : ''" class="pos-relative m-t-30">
+    <div *ngIf="getProductData.length>0">
+      <div
+        [ngStyle]="{color: data.uiData.color, 'font-size': data.uiData ? data.uiData.font: '', 'font-weight':data.uiData.bold ? 'bold': '', 'font-style':data.uiData.italic ? 'italic':'','text-decoration':data.uiData.underline? 'underline':'', 'font-family': data.uiData.font_family }">
+        {{data.uiData.text}}</div>
+      <div class="fs-14" style="color: #767676" [ngStyle]="{'font-family': session.getFont()}">
+        Tap to select
+      </div>
+      <div *ngFor="let item of getProductData">
+        <div class="t-right">
+          <mat-checkbox></mat-checkbox>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 align-self-center ">
+            <img alt="" class="product-image" onerror="this.src='assets/img/whale-placeholder.png';" src="{{item.image}}">
+          </div>
+          <div class="col-lg-8" [class] ="dataShare.active ?'desktop-name': 'phone-name'">
+            <div>
+        <span [ngStyle]="{color: data.uiData.color, 'font-size': '18px', 'font-family': session.getFont()}" class="name">
+          {{item.name}} </span>
+            </div>
+            <div>
+        <span [ngStyle]="{'font-size': '16px', 'font-family': session.getFont()}" class="num">
+          {{session.getCurrency()}}{{item.price}}</span>
+            </div>
+            <div *ngIf="item.desc else dummyDes" [ngStyle]="{'font-size':  '14px', 'font-family': session.getFont()}" [class] ="dataShare.active ? 'desktop-des' : 'phone-des'" style=" text-align: justify;">
+              {{item.desc}}
+            </div>
+            <ng-template #dummyDes>No description</ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="getProductData.length === 0" class="text-product">
+      <div> Add Product from settings first.</div>
+      <div>
+        <button (click)="product()" class="product-button" mat-raised-button>Product</button>
+      </div>
+    </div>
+
+    <app-edit *ngIf="data.uiData.selected"></app-edit>
+  </div>
+
+
+</div>
+</div>

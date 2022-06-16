@@ -1,0 +1,31 @@
+`<div class="header">
+  <div class="row align-items-center">
+    <div class="col-lg-6">
+      <span class=" brand-link" (click)="whaleHome()">
+        <span class="brand"><img alt="" src="assets/img/whale-logo.png" style="width: 24%;"> </span>
+      </span>
+    </div>
+    <div class="col-lg-6 btn-login" >
+
+
+      <div *ngIf="session.isLoggedIn" class="btn-signup1" (click)="goToSettings()"  >
+
+        <!--        <span>-->
+        <!--          <mat-icon>settings</mat-icon>-->
+        <!--        </span>-->
+        <span>
+        <span>
+          Settings
+        </span>
+      </span>
+      </div>
+      <mat-icon  (click)="logout()" class="fs-24 cs-pointer">logout</mat-icon>
+      <!--      <button *ngIf="!session.isLoggedIn" mat-flat-button  routerLink="/login">Login</button>-->
+      <!--      <button *ngIf="session.isLoggedIn" (click)="session.logout()" mat-flat-button  routerLink="/login">Logout</button>-->
+    </div>
+
+    <div class="col t-right align-items-center">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,73 @@
+table {
+  width: 100%;
+}
+
+.add-btn{
+  background-color: #2f76bd;
+  color: #fafafa;
+}
+.section-card{
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  table tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  table th,
+  table td {
+    padding: .625em;
+    text-align: start;
+    width: 20%;
+  }
+
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .action_btn1{
+    background: #f0f3f7!important;
+    padding: 0 4px!important;
+    margin-right: 10px!important;
+  }
+
+  margin-bottom: 10px;
+
+}
+.load{
+  font-size: 20px;
+}
+.spin-load{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+
+.spinner{
+  display: inline-block;
+}
+.bck-btn{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.product-text{
+  font-size: 18px;
+  font-weight: bold;
+}
+.icon-product{
+  width: 38px!important;
+  height: 38px!important;
+}

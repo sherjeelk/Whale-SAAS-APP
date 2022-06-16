@@ -1,0 +1,130 @@
+<div style="margin-top: 100px">
+  <div class="container ">
+    <div class="dis-flex align-items-center">
+      <span (click)="back()" class="cs-pointer">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z"/>
+  </svg>
+    </span>
+      <h3 class="m-l-10 m-b-0">All Settings</h3>
+    </div>
+    <div class="setting-container">
+      <mat-tab-group [(selectedIndex)]="data.tabIndex" animationDuration="1000ms">
+
+        <mat-tab label="Global Settings">
+          <!--        <mat-icon> <img src="./assets/img/setting/appearence.svg" class="m-b-13" alt=""></mat-icon>-->
+          <!--        <div>Global Settings</div>-->
+          <app-appearance-setting></app-appearance-setting>
+        </mat-tab>
+
+        <mat-tab label="Manage Service">
+          <!--        <mat-icon><img src="./assets/img/setting/service.svg" class="m-b-13" alt="">  </mat-icon>-->
+          <!--        <div>Manage Service</div>-->
+          <app-manage-service></app-manage-service>
+        </mat-tab>
+
+        <mat-tab label="Manage Product">
+          <!--        <mat-icon><img style="width: 100%;" src="./assets/img/setting/package.png" class="m-b-13" alt=""> </mat-icon>-->
+          <!--        <div>Manage Product</div>-->
+          <app-product></app-product>
+        </mat-tab>
+
+        <mat-tab label="DNS">
+
+<!--          No Domain Added-->
+          <div *ngIf="!session.getSite()?.domain" class="t-center mt-5">
+            <h5>Add domain here</h5>
+            <button mat-raised-button class="btn-primary btn-domain" color="primary" (click)="openDomainSetting()">Add Domain</button>
+          </div>
+
+<!--          If Domain is added but not verified-->
+          <div *ngIf="!session.getSite()?.verified && session.getSite()?.domain" class="text-center mt-5">
+<!--            {{session.getUser().site.verified}} <br> {{ session.getUser().site.domain}}-->
+            <!--          <mat-icon> <img src="./assets/img/setting/dns.svg" class="m-b-13" alt=""> </mat-icon>-->
+            <h5>You have added domain please add the below text record in DNS management to verify.</h5>
+            <div class="mt-5">
+              <div class="container">
+                <div class="row domain-header">
+                  <hr>
+                  <div class="col-lg-1 heading-text">Type</div>
+                  <div class="col-lg-4 heading-text">Host</div>
+                  <div class="col-lg-7 heading-text">Value</div>
+                  <hr>
+                </div>
+
+                <div class="row domain-value">
+                  <div class="col-lg-1 your-domain">TXT</div>
+                  <div class="col-lg-4 your-domain">{{this.session.getSite().domain}}</div>
+                  <div class="col-lg-6 your-domain">{{this.session.getSite().verificationCode}}</div>
+                  <div class="col-lg-1 your-domain">
+                    <button class="copy" (click)="copyToClipboard(this.session.getSite().verificationCode)">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5">
+            <button mat-raised-button class="btn-primary btn-domain" color="primary" (click)="checkDomain()">Re-Verify Domain</button>
+            <button mat-raised-button class="btn-primary btn-domain" color="primary" (click)="openDomainSetting()">Change Domain</button>
+            </div>
+          </div>
+
+
+
+
+<!--      Domain is verified    -->
+          <div *ngIf="session.getSite()?.verified">
+            <div class="verify">
+              <div class="domain-verified">
+                Your domain verification is completed successfully.Please add an A type record in your DNS management
+                system.
+                <div style="font-size: medium; font-weight: bold">*Now it might take upto 24 hours for the domain to be live.</div>
+              </div>
+              <div class="t-center">
+                <div class="row domain-value">
+                  <hr>
+                  <div class="col-lg-2 your-text">Record type</div>
+                  <div class="col-lg-4 your-text">Domain Name</div>
+                  <div class="col-lg-6 your-text">Ip Address</div>
+                </div>
+              </div>
+              <div class="t-center">
+                <div class="row domain-value">
+                  <hr>
+                  <div class="col-lg-2 your-domain">A</div>
+                  <div class="col-lg-4 your-domain">{{this.session.getSite().domain}}</div>
+                  <div class="col-lg-6 your-domain">188.166.5.170</div>
+                </div>
+                <div class="verify-btn">
+                <button mat-raised-button class="btn-primary button2" color="primary" (click)="openDomainSetting()">
+                  Change Domain
+                </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </mat-tab>
+        <mat-tab label="Manage Api">
+          <!--        <mat-icon><img src="./assets/img/setting/api.svg"  alt=""> </mat-icon>-->
+          <!--        <div>Manage Api</div>-->
+          <app-manage-api></app-manage-api>
+        </mat-tab>
+        <mat-tab label="Profile">
+          <!--        <mat-icon ><img src="./assets/img/setting/profile.svg" class="m-b-13" alt=""> </mat-icon>-->
+          <!--        <div>Profile</div>-->
+          <app-profile></app-profile>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+  </div>
+
+</div>

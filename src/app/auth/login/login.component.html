@@ -1,0 +1,97 @@
+<div class="container-fluid log-container " >
+  <div class="row">
+    <div class="col-lg-6 img-div">
+      <img src="assets/img/sass-login-image.png" alt="" class="img">
+      <img class="saas-logo" src="assets/img/whale-logo.png" alt="">
+    </div>
+    <div class="col-lg-6 log-div">
+
+      <mat-card *ngIf="router.url === '/login'" class="card">
+        <div class="card-width">
+        <div>
+          <img src="" alt="" routerLink="/" class="logo">
+        </div>
+        <mat-card-title class="heading">Welcome Back!</mat-card-title>
+        <mat-card-subtitle class="sub-heading">Login to continue</mat-card-subtitle>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="login_form" novalidate>
+          <div class="t-left">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput placeholder="user name">
+              <mat-error>Please enter valid email</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" matInput placeholder="Password" type="password">
+              <mat-error>Please enter valid password</mat-error>
+
+            </mat-form-field>
+            <div class="forget-div">
+              <mat-checkbox>Remember me</mat-checkbox>
+              <a class="forget-pass" href="">Forgot Password?</a>
+
+            </div>
+            <div class="m-t-16 p-login">
+              <button [disabled]="!loginForm.valid" class="login-btn m-t-16" color="primary" mat-raised-button
+                      type="submit">Sign In
+              </button>
+              <button [routerLink]="'/signup'" class="primary account-btn">
+                Create an account
+                </button>
+
+            </div>
+
+          </div>
+        </form>
+        </div>
+      </mat-card>
+
+      <mat-card  *ngIf="router.url === '/signup'" class="card">
+        <div class="card-width">
+        <div>
+          <img src="" alt="" routerLink="/" class="logo">
+        </div>
+        <mat-card-title class="heading">Welcome to Whale</mat-card-title>
+        <mat-card-subtitle class="sub-heading">Sign up to continue</mat-card-subtitle>
+        <form  [formGroup]="signUpForm" class="login_form" novalidate>
+          <div class="t-left">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput placeholder="user name">
+              <mat-error>Please enter valid email</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" matInput placeholder="Password" type="password">
+              <mat-error>Please enter 8 digits password</mat-error>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Confirm Password</mat-label>
+              <input formControlName="confirmPassword" matInput placeholder="Confirm Password" type="password">
+              <mat-error>Please enter the same password</mat-error>
+
+            </mat-form-field>
+<!--            <div class="forget-div">-->
+<!--              <mat-checkbox>Remember me</mat-checkbox>-->
+<!--              <a class="forget-pass" href="">Forget Password?</a>-->
+
+<!--            </div>-->
+            <div class="m-t-16 p-login">
+              <button (click)="signUp()" [disabled]="!signUpForm.valid" class="login-btn m-t-16" color="primary" mat-raised-button
+                      type="submit">Sign Up
+              </button>
+              <button [routerLink]="'/login'" class="primary account-btn">
+                Login
+                </button>
+
+            </div>
+
+          </div>
+        </form>
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

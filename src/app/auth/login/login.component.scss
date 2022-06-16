@@ -1,0 +1,167 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mat-form-field {
+  width: 100%;
+
+}
+
+//.main-container {
+//  display: flex;
+//  height: 100%;
+//  justify-content: center;
+//}
+
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+.mat-card>:first-child{
+  margin-top: 50px;
+}
+
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login {
+  color: #47639AFF;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.heading {
+  color: #009FE3;
+  padding: 1px;
+  margin-left: 30px;
+  font-size: 32px;
+}
+
+.sub-heading{
+  font-size: 18px;
+  margin-left: 30px;
+}
+
+mat-card-title{
+  text-align: left!important;
+}
+mat-form-field{
+  width: 100% !important;
+}
+
+
+
+.background {
+  background: #1d4497;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1D4497FF, #47639AFF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1D4497FF, #47639AFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100vh;
+}
+
+.login-btn {
+  width: 100%;
+  color: whitesmoke;
+  margin: 8px 8px 0 0;
+  border-radius: 5px;
+  background: #009FE3;
+  font-size: 18px;
+  height: 40px;
+}
+.account-btn{
+  width: 100%;
+  margin: 8px 8px 0 0;
+  border-radius: 5px;
+  border: 1px solid #009FE3;
+  color: #009FE3;
+  background-color: white;
+}
+
+.login_form{
+  padding: 15px 25px;
+}
+
+.p-login {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_btn{
+  background-color: #2f76bd;
+  color: #fff;
+  padding: 7px 50px;
+  border-radius: 10px;
+}
+
+.logo{
+  cursor: pointer;
+  outline: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .card{
+    width: 55%;
+  }
+
+}
+
+
+@media only screen and (max-width:650px){
+  .card{
+    width: 95%;
+  }
+}
+.img{
+  width: 100%;
+  border-radius: 2px;
+  //height: 100%;
+  padding: 0;
+
+}
+.card {
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+}
+.img-div{
+  padding-right: 0;
+  padding-left: 0;
+}
+.log-div{
+  padding-left: 0;
+  padding-right: 0;
+
+}
+
+.saas-logo{
+  position: absolute;
+  width: 17%;
+  top: 40%;
+  left: 16%;
+}
+
+//*{
+//  border: 2px solid red;
+//}
+
+.log-container{
+  height: 100vh;
+  overflow: hidden;
+}
+.forget-div{
+  display: flex;
+  justify-content: space-between;
+}
+.forget-pass{
+  text-decoration: none;
+  text-outline: none;
+  color:#009FE3;
+}
+.card-width{
+  width: 75% !important;
+}

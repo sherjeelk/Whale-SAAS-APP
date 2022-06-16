@@ -1,0 +1,67 @@
+.logout{
+  margin: 25px 20px;
+}
+.log-button{
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.close-verify{
+  margin: 20px 0;
+  text-align: center;
+}
+.text-verify{
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.yes{
+  color: #009fe3;
+  width: 35%;
+  border: 1px solid #009fe3;
+  background-color: white;
+  margin-right: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.no{
+  background-color: #009fe3;
+  color: white;
+  font-size: 16px;
+  width: 35%;
+  border-radius: 10px;
+}
+
+.text{
+  font-size: 20px;
+  font-weight: bold;
+}
+.text-publish{
+  font-weight: bold;
+  font-size: 18px;
+  text-align: justify;
+}
+.exit{
+  margin: 25px 20px;
+  text-align: center;
+}
+.infoInstructions{
+  margin: 5px 20px 25px 20px;
+  text-align: justify;
+}
+.verify-exit{
+  margin: 10px 0 0 0 ;
+}
+.verify-text{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 18px 10px 18px 36px;
+}
+.close{
+  background-color: #009fe3;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  padding: 5px 0;
+}

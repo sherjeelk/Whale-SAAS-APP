@@ -1,0 +1,11 @@
+<section [class]="data.uiData.selected ? 'border' : ''" class="pos-relative m-t-30 section">
+
+  <div *ngFor= "let item of data.dynamicData.radioBtn">
+  <label class="container">
+    <input  type="radio" (change)="changeRadioBtn($event, item)" [checked]="item.active">
+    <span [style]="{'--main-bg-color': session.getColor()}" class="radiomark" ></span>
+    <span [ngStyle]="{color: data.color, 'font-size':data.font, 'font-family': data.font_family}">{{item.text}}</span>
+  </label>
+  </div>
+  <app-edit *ngIf="data.uiData.selected"></app-edit>
+</section>

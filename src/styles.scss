@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/css/util.css";
+
+:root {
+  --main-bg-color: #000000;
+  --checkbox-color: #6e6a6a;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0
+}
+
+.input-grey {
+  background-color: #f5f8fa;
+  border: none;
+  border-radius: 6px;
+  min-height: 48px;
+  width: 75%;
+  padding: 4px 8px;
+  font-size: medium;
+  transition: color .2s ease, background-color .2s ease;
+  //font-family: 'EB Garamond', serif;
+  font-weight: bolder;
+}
+
+.input-grey:focus {
+  outline: none !important;
+  background-color: #eceff1;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #ff380a;
+  color: #fff;
+}
+
+.font-family-garmond {
+  font-family: 'EB Garamond', serif
+}
+
+.font-family-lato {
+  font-family: 'Lato', serif;
+}
+
+.font-family-poppins {
+  font-family: 'Poppins', serif;
+}
+
+.font-family-rubik {
+  font-family: 'Rubik', serif;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.border{
+  border: 1px solid;
+  padding: 5px;
+}
+
+.panel_class .mat-dialog-container {
+  //overflow: hidden;
+  border-radius: 14px !important;
+  //padding: 5px;
+}

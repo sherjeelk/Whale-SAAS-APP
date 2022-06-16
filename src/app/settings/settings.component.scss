@@ -1,0 +1,76 @@
+.setting-info-card{
+  border: 3px solid whitesmoke;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.appearance-cont{
+margin: 15px;
+}
+
+.table-img{
+  height: 48px;
+  width: 48px;
+}
+
+.table-row{
+  padding: 10px;
+  border-bottom: 1px #7d7d7d dashed;
+}
+
+.mat-tab-label{
+  justify-content: space-between!important;
+  min-width: 100px !important;
+}
+
+.btn-domain{
+  background-color: #1a73e8;
+  margin: 10px 0 20px 10px;
+  text-decoration: none;
+}
+.btn-primary:focus{
+  box-shadow:  none!important;
+}
+
+.copy{
+  border: none;
+  background: transparent;
+}
+.heading-text{
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+}
+hr{
+  margin: 0 !important;
+}
+.your-domain{
+  overflow-wrap: break-word;
+  margin: 10px 0;
+}
+.domain-verified{
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+}
+.domain-value{
+  font-size: 16px;
+}
+.your-text{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.verify-btn{
+  margin: 10px 0 ;
+}
+.verify{
+  text-align: left;
+  margin-top: 25px;
+  overflow-x: hidden;
+}
+
+::ng-deep.mat-tab-link,  ::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+  min-width: 16%!important;
+}

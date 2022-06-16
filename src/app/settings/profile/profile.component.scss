@@ -1,0 +1,49 @@
+.bck-button{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.profile-text{
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.input-profile {
+  //border: 1px solid gray;
+  border-radius: 6px;
+  min-height: 48px;
+  width: 65%;
+  padding: 4px 8px;
+  font-size: medium;
+  transition: color .2s ease,background-color .2s ease;
+  margin-bottom: 20px;
+}
+
+.input-about{
+  border-radius: 6px;
+  min-height: 100px;
+  width: 65%;
+  padding: 4px 8px;
+  font-size: medium;
+  transition: color .2s ease,background-color .2s ease;
+  margin-bottom: 20px;
+}
+.card-margin{
+  margin: 1px 50px ;
+  padding: 40px  50px;
+}
+
+//.label{
+//  margin-bottom: 10px;
+//}
+
+.mat-checkbox-layout .mat-checkbox-inner-container{
+  margin-right: 11px!important;
+}
+
+.load-img{
+  height: 64px;
+  width: 64px;
+}
+.mat-form-field{
+  width: 75% !important;
+}

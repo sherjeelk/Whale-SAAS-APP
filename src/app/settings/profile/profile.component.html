@@ -1,0 +1,170 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="profile-text">
+  </div>
+  <div>
+    <form [formGroup]="companyDetails">
+      <mat-card class="card-margin">
+        <h4 class="mb-4"> Details about company</h4>
+
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Enter company name</strong></mat-label>
+              <input matInput type="text" placeholder="Company name" formControlName="name">
+              <mat-error>*Company name required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Email Address</strong></mat-label>
+              <input matInput type="text" placeholder="Email" formControlName="email">
+              <mat-error>*Email address required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Phone Number</strong></mat-label>
+              <input matInput minlength="10" maxlength="10" type="text" placeholder="Phone" formControlName="phone"
+                     (keypress)="util.isNumberKey($event)">
+              <mat-error>*Phone number required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Address</strong></mat-label>
+              <input matInput type="text" placeholder="Enter Location" formControlName="address">
+              <mat-error>*Address required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Footer Title</strong></mat-label>
+              <input matInput type="text" placeholder="Footer title" formControlName="title">
+              <mat-error>*Title required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Brand Name</strong></mat-label>
+              <input matInput type="text" placeholder="Brand Name" formControlName="brand">
+              <mat-error>*Brand name required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Footer description</strong></mat-label>
+              <textarea matInput rows="4" type="text" placeholder="Description" formControlName="desc"></textarea>
+              <mat-error>*Desc required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label class="label"><strong>About us</strong></mat-label>
+              <textarea matInput rows="4" type="text" placeholder="About us" formControlName="about"></textarea>
+              <mat-error>*About us required</mat-error>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Terms & Condition</strong></mat-label>
+              <textarea matInput rows="4" type="text" placeholder="Terms & Conditions" formControlName="terms"></textarea>
+              <mat-error>*Terms required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label><strong>Privacy Policy</strong></mat-label>
+              <textarea matInput rows="4" type="text" placeholder="Privacy Policy" formControlName="privacy"></textarea>
+              <mat-error>*Privacy required</mat-error>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-6 mb-4">
+            <label class="mb-2"><strong>Choose Logo</strong> </label> <br>
+            <input (change)="imgChange($event)" type="file" accept="image/*">
+            <!--              <img *ngIf="imgeUrl.length > 0" [src]="imgeUrl" alt="" class="load-img">-->
+            <img *ngIf="companyDetails" [src]="newImage ? imgeUrl : session.getSite().logo" alt="" class="load-img">
+            <!--                <img *ngIf="imgeUrl" [src]="newImage ? imgeUrl : companyDetails?.value?.logo" alt=" " class="load-img">-->
+            <div class="m-t-10">
+              <mat-checkbox (change)="matCheck($event)" [checked]="logoAsHeader" formControlName="logoAsHeader">
+                Select as header logo instead of name
+              </mat-checkbox>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+      </mat-card>
+
+      <mat-card class="card-margin mb-4">
+        <h4 class="mb-4">Social Networks</h4>
+        <h6>Please enter proper links</h6>
+        <h6>(eg:- https://www.facebook.com/)</h6>
+        <div class="row">
+          <div class="col-6">
+            <label class="label" for="fb">
+              <mat-checkbox [checked]="socialLinks.facebook.active" (change)="check($event, 1)">
+                <strong>Facebook</strong>
+              </mat-checkbox>
+            </label><br>
+            <input class="w-full input-profile" type="text" placeholder="Facebook" id="fb" formControlName="fb"
+                   [readOnly]="!socialLinks.facebook.active">
+            <!--            <mat-error>*Enter the link</mat-error>-->
+
+          </div>
+
+          <div class="col-6">
+            <label class="label" for="insta">
+              <mat-checkbox [checked]="socialLinks.insta.active" (change)="check($event, 2)">
+                <strong>Instagram</strong>
+              </mat-checkbox>
+            </label><br>
+            <input class="w-full input-profile" type="text" placeholder="Instagram" id="insta" formControlName="insta"
+                   [readOnly]="!socialLinks.insta.active">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <label class="label" for="twitter">
+              <mat-checkbox [checked]="socialLinks.twitter.active" (change)="check($event, 3)">
+                <strong>Twitter</strong>
+              </mat-checkbox>
+            </label><br>
+            <input class="w-full input-profile" type="text" placeholder="Twitter" id="twitter" formControlName="twitter"
+                   [readOnly]="!socialLinks.twitter.active">
+          </div>
+        </div>
+
+        <div *ngIf="!spinner">
+          <button (click)="uploadImage($event)" [disabled]="!companyDetails.valid" mat-raised-button class="mat-warn">Save</button>
+        </div>
+        <div class="m-l-20" *ngIf="spinner">
+          <mat-spinner diameter="30"></mat-spinner>
+        </div>
+
+      </mat-card>
+
+    </form>
+
+
+  </div>
+
+</div>
+
+

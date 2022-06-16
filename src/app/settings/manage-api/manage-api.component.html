@@ -1,0 +1,160 @@
+
+<mat-card class="mt-3 mb-3">
+<div class="container">
+  <div class="dis-flex justify-content-between">
+    <div class="heading-api">Manage API</div>
+    <div class="close-bttn">
+    <button class="cls-btn"   (click)="instructionInfo()">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+      </svg>
+    </button>
+    </div>
+  </div>
+
+  <div class="mat-input ">
+    <div>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label >SERVICES</mat-label>
+        <mat-select value=" "  [(ngModel)]="selectService" #service >
+<!--          // email-->
+          <mat-option value="mail"> <img src="./assets/img/setting/mail.png" alt="" class="logo">Mail</mat-option>
+          <mat-option value="paytrail"><img src="./assets/img/setting/paytrail.png" alt="" class="logo">Paytrail</mat-option>
+          <mat-option value="stripe"><img src="./assets/img/setting/stripe.png" alt="" class="logo">Stripe</mat-option>
+<!--          // calendar-->
+          <mat-option  value="scheduler"><img src="./assets/img/setting/scheduler.png" alt="" class="logo">Scheduler</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+<!--  Only Shows on when select mail from services-->
+    <div *ngIf="selectService === 'mail'">
+      <mat-form-field appearance="outline" class="width-paytrail m-r-5">
+        <mat-label>User Name</mat-label>
+        <input [(ngModel)]="userName" matInput type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="width-paytrail">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" matInput type="password">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="width ">
+        <mat-label>{{(selectService === 'stripe') ? 'Secret key' : (selectService === 'paytrail') ? 'Auth key' : (selectService === 'mail') ? 'Host' : 'API'}}</mat-label>
+<!--        <mat-label>{{selectService === 'stripe' ? 'Secret Key' : 'API / Host'}}</mat-label>-->
+        <input [(ngModel)]="apiStr" matInput type="text" #apikey>
+      </mat-form-field>
+    </div>
+
+    <!--    Only Shows on when select scheduler from services-->
+    <div *ngIf="selectService === 'scheduler'">
+      <mat-form-field appearance="outline" class="width-paytrail m-r-5">
+        <mat-label>User Name</mat-label>
+        <input [(ngModel)]="userName" matInput type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="width-paytrail">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" matInput type="password">
+      </mat-form-field>
+    </div>
+    <!--    Only Shows on when select paytrail from services-->
+
+    <div *ngIf="selectService === 'paytrail'">
+      <mat-form-field appearance="outline" class="width-paytrail">
+        <mat-label>Merchant Id</mat-label>
+        <input [(ngModel)]="merchId" matInput type="text">
+      </mat-form-field>
+    </div>
+    <div *ngIf="selectService === 'stripe'">
+      <mat-form-field appearance="outline" class="width-paytrail">
+        <mat-label>Publishable key</mat-label>
+        <input [(ngModel)]="publish_key" matInput type="text">
+      </mat-form-field>
+    </div>
+    <div>
+      <div *ngIf="!loading">
+        <button class="btn-save" (click)="saveApi(apikey.value, service.value)">Save</button>
+      </div>
+      <div *ngIf="loading" class="m-r-50"> <mat-spinner diameter="30"></mat-spinner></div>
+
+      <!--      <div *ngIf="loadApi && enteredApiArr.length>0">-->
+<!--        <mat-spinner diameter="30"></mat-spinner>-->
+<!--      </div>-->
+
+    </div>
+  </div>
+</div>
+</mat-card>
+
+
+  <div *ngIf="enteredApiArr.length>0">
+    <div >
+    <mat-card *ngFor="let data of enteredApiArr" class="mt-5 mb-3">
+    <div class="row api-row" *ngIf="data.type === 'email'" >
+      <div class="col-3">Selected Service</div>
+      <div  class="col-4">Host</div>
+      <div class="col-4">Username</div>
+      <div class="col-1"></div>
+    </div>
+      <div class="row api-row" *ngIf="data.type === 'stripe'" >
+        <div class="col-3">Selected Service</div>
+        <div class="col-4"> Secret Key</div>
+        <div  class="col-4"> Publishable key</div>
+        <div class="col-1"></div>
+      </div>
+      <div class="row api-row" *ngIf="data.type === 'calendar'" >
+      <div class="col-3">Selected Service</div>
+      <div  class="col-4">API key</div>
+      <div class="col-4">Username</div>
+      <div class="col-1"></div>
+    </div>
+      <div class="row api-row" *ngIf="data.type === 'paytrail'" >
+        <div class="col-3">Selected Service</div>
+        <div  class="col-4">Auth key</div>
+        <div class="col-4">Merchant Id</div>
+        <div class="col-1"></div>
+      </div>
+    <hr>
+    <div class="m-b-20" style="max-height: 300px">
+      <div class="row entered-api" >
+        <div class="row">
+          <div class="col-3 dis-flex">
+            <div><img *ngIf= "data.type" [src]="'./assets/img/setting/' + data.name + '.png'" alt=""></div>
+            <div class="text-service">{{data.name}}</div>
+          </div>
+          <div  class="col-4 text-api" *ngIf="data.type === 'email'"> {{data?.identifier}}</div>
+          <div  class="col-4 text-api" *ngIf="data.type === 'paytrail'"> {{data.apiKey1}}</div>
+          <div  class="col-4 text-api" *ngIf="data.type === 'stripe'"> {{data.apiKey1}}</div>
+          <div  class="col-4 text-api" *ngIf="data.type === 'calendar'"> {{data.apiKey1}}</div>
+
+          <div class="col-4 text-api" *ngIf="data.type === 'email'"> {{data.username}}</div>
+          <div class="col-4 text-api" *ngIf="data.type === 'paytrail'"> {{data.apiKey2}}</div>
+          <div class="col-4 text-api" *ngIf="data.type === 'stripe'"> {{data.apiKey2}}</div>
+          <div class="col-4 text-api" *ngIf="data.type === 'calendar'"> {{data.username}}</div>
+          <div class="col-1 t-center">
+            <button class=" action-btn">
+              <svg (click)="deletePopUp(data)" style="width: 15px; height: 15px" viewBox="0 0 24 24">
+                <path
+                  d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z"
+                  fill="#767676"
+                />
+              </svg>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </mat-card>
+    </div>
+  </div>
+<mat-card *ngIf="enteredApiArr.length === 0" class="text-center mt-2 mb-5">
+  <div>
+    <mat-icon class="icon-api"><img src="./assets/img/setting/api.svg"  alt=""> </mat-icon>
+    <div class="api-text">Currently no API available.</div>
+    <div class="api-text">Add API here.</div>
+  </div>
+</mat-card>

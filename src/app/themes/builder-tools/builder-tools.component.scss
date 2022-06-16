@@ -1,0 +1,273 @@
+.builder {
+  margin: 12px 0 15px 17px;
+}
+
+.heading[_ngcontent-xsb-c135] {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 0 40px;
+}
+
+.tool-border {
+  border: 2px solid rgba(77, 76, 76, 0.82);
+  border-radius: 8px;
+  padding: 15px 0;
+  text-align: center;
+  color: rgba(52, 52, 52, 0.82);
+}
+
+.builder-icon {
+  font-size: 24px;
+}
+.builder-tools{
+  display: flex;
+  justify-content: space-between;
+}
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #4f4e4e;
+}
+.icon-system{
+  align-self: center;
+}
+.btn-signup1 {
+  border: 1px solid lightgray;
+  border-radius: 0;
+  color: gray;
+  padding: 0;
+  min-width: 40px;
+  line-height: 35px;
+}
+.system-btn{
+  margin-right: 15px;
+  background: none;
+  border: none;
+}
+.bg-color{
+  background-color: #d0d0d0!important;
+  border-radius: 5px;
+}
+.bg-color2{
+  background: none!important;
+}
+.mobile-btn{
+  //background: none;
+  border: none;
+}
+
+.margin-right {
+  margin-right: 0 !important;
+}
+
+.add-mod {
+  //--bs-gutter-x: 0;
+  margin-right: 0;
+}
+
+.quicksand {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  color: gray;
+  padding-left: 10px;
+  min-width: 100px;
+  line-height: 35px;
+}
+
+.arrow-icon {
+  padding-left: 60px;
+  padding-right: 10px;
+
+}
+
+.quicksand1 {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  color: gray;
+  padding: 0;
+  margin-left: 20px;
+  line-height: 35px;
+}
+
+.arrow-icon1 {
+  padding-left: 5px;
+}
+
+.changes-btn {
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background-color: dodgerblue;
+  color: #ffffff;
+  padding: 0 20px;
+  line-height: 35px;
+}
+
+.btn {
+  border: none;
+  text-decoration: none;
+  box-shadow: none;
+  padding: 10px 0;
+}
+
+//.btn:hover{
+//  background-color: #ababab82;
+//}
+.text-edit {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.radio-btn {
+  margin-bottom: 10px;
+}
+
+.align-input {
+  margin: 25px 0 0 0;
+  align-self: center;
+  position: relative;
+}
+
+.delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-grey {
+  background-color: #f5f8fa;
+  border: 1px solid #cecece;
+  border-radius: 6px;
+  min-height: 40px;
+  width: 100%;
+  padding: 4px 52px 4px 8px;
+  font-size: 15px;
+  font-weight: normal;
+  transition: color .2s ease, background-color .2s ease;
+
+}
+
+.input-grey:focus {
+  outline: none !important;
+  background-color: #eceff1;
+  color: #1d1d1d;
+}
+
+.input-radio {
+  background-color: #f5f8fa;
+  border: 1px solid #cecece;
+  border-radius: 6px;
+  min-height: 40px;
+  width: 60%;
+  padding: 4px 8px;
+  font-size: 15px;
+  font-weight: normal;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.input-radio:focus {
+  outline: none !important;
+  background-color: #eceff1;
+}
+
+::ng-deep .mat-select-panel {
+  max-height: 80vh !important;
+}
+
+.mat-icon-fs{
+  display: flex;
+  margin-left: 10px;
+  mat-icon{
+    font-size: 28px!important;
+    align-self: center;
+    margin: 5px;
+    cursor: pointer;
+  }
+  span{
+    font-size: 20px;
+    align-self: center;
+  };
+
+}
+
+.item-text {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.margin-top {
+  margin: 25px 25px 0 25px;
+}
+
+.save-btn {
+  margin: 0 0 0 25px;
+  width: 25%;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+.white {
+  background-color: white;
+  margin: 7px;
+  width: 60%;
+
+}
+
+.black {
+  background-color: #928d8d78;
+  color: white;
+  margin: 7px;
+  width: 60%;
+}
+
+.font-icon {
+  width: 30%;
+}
+
+mat-form-field {
+  width: 30% !important;
+}
+
+
+.color-input {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  min-height: 38px;
+}
+
+.f-border {
+  width: 81px;
+  padding: 7px 3px;
+  border: 1px solid #cecece;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.view-system{
+  align-self: center;
+  margin-bottom: 15px;
+}
+.grid-btn{
+  margin-right: 15px;
+  //background: none;
+  //border: none;
+}
+.stack-btn{
+  border: none;
+}
+.back-color{
+  background-color: #d0d0d0!important;
+  border-radius: 5px;
+}
+
+.back-color2{
+  background: none!important;
+}

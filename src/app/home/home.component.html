@@ -1,0 +1,39 @@
+<div class="container m-t-150">
+<!--  <div style="height: 500px;padding-top: 125px;">-->
+
+<!--    <div class="qodef-image" style="background-image:url('/assets/img/bg.jpg')">-->
+<!--&lt;!&ndash;      <img src="https://grafik.qodeinteractive.com/wp-content/uploads/2015/12/landing-page-slide-1.jpg" alt="The Grafik Theme.">&ndash;&gt;-->
+
+<!--      <div class="text-center m-t-150 text-white">-->
+<!--        <h3 class="m-t-15">Welcome to</h3>-->
+<!--        <div class="fs-74"><span>Whale-SAAS</span></div>-->
+<!--        <div class=" m-b-15 t-center fs-18" style="padding: 0 20%">A powerful theme for professional creatives. Whale-SASS provides a large collection of home and inner pages, carefully crafted elements, and easily customizable templates.</div>-->
+<!--        <div class="m-t-50">-->
+<!--          <button class="started" mat-flat-button>Get Started</button>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+
+
+  <div>
+    <div class="t-center"><h2>Choose a template</h2></div>
+    <div  style="padding: 0 20%" class="fs-18 t-center">Choose from ten awesome home pages and use the power of Whale-SASS to make them your own.
+      Easily change all colors, rearrange sections, add new elements, and so much more.
+    </div>
+    <div class="row p-t-50">
+      <div class="col-lg-6 col-sm-12 temp-cont" *ngFor="let item of template" (click)="openPopUp(item.data)">
+        <div>
+          <div class="overlay-cont">
+            <img [src]="item.image"  alt="" class="temp-img">
+            <div class="overlay"><span>+</span></div>
+          </div>
+          <div class="temp-desc">
+            <h5>{{item.title}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

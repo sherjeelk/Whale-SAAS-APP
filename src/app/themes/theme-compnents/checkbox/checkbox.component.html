@@ -1,0 +1,7 @@
+<div [class]="data.selected ? 'border' : ''" class="pos-relative m-t-30">
+  <label class="checkmarkContainer" [ngStyle]="{color: data.color, 'font-size':data.font, 'font-family': data.font_family}">{{data.text}}
+    <input  type="checkbox" #checkbox  (change)="changeCheckBoxValue($event)">
+    <span [style]="{'--checkbox-color' : checkBoxValue ? session.getColor() : '#666565'}"  class="checkmark"></span>
+  </label>
+  <app-edit *ngIf="data.selected"></app-edit>
+</div>
